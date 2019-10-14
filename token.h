@@ -7,7 +7,27 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
-struct Token {
+#include <map>
+#include <string>
+
+enum TokenID {
+    DIGIT,
+    IDENTIFIER,
+    EOF___,
+    OPERATOR,
+    TOTAL
+};
+
+class Token {
+private:
+    int id, instance, lineNum;
+    std::string tokStr;
+    static std::map<std::string, int> instanceManager;
+
+    void setInstance();
+
+public:
+    Token(int id, int lineNum, std::string tokStr);
 
 };
 
