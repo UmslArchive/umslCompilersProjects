@@ -4,6 +4,8 @@
 //Date:     10/20/19
 //-----------------------------------------------------------------------------
 
+#ifndef TEST_SCANNER_H
+#define TEST_SCANNER_H
 
 class TestScanner {
 private:
@@ -11,3 +13,5 @@ private:
 public:
 
 };
+
+#endif

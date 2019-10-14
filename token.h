@@ -4,9 +4,11 @@
 //Date:     10/20/19
 //-----------------------------------------------------------------------------
 
-class Token {
-private:
+#ifndef TOKEN_H
+#define TOKEN_H
 
-public:
+struct Token {
 
 };
+
+#endif

@@ -4,9 +4,14 @@
 //Date:     10/20/19
 //-----------------------------------------------------------------------------
 
+#ifndef SCANNER_H
+#define SCANNER_H
+
 class Scanner {
 private:
 
 public:
 
 };
+
+#endif
