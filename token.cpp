@@ -27,14 +27,3 @@ void Token::setInstance() {
     }
     return;
 }
-
-void Token::printInstanceManager() {
-    std::map<std::string, int>::iterator beginning = instanceManager.begin();
-    std::map<std::string, int>::iterator ending = instanceManager.end();
-
-    std::cout << "INSTANCE MANAGER:\n";
-    for(std::map<std::string, int>::iterator it = beginning; it != ending; ++it) {
-        std::cout << it->first << "=>" << it->second << "\n";
-    }
-    std::cout << std::endl;
-}
