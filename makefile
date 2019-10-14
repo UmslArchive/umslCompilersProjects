@@ -7,7 +7,7 @@
 CC = g++
 CFLAGS = -I . -g
 TARGET = scanner
-OBJS = main.o scanner.o table.o testScanner.o token.o
+OBJS = main.o scanner.o table.o testScanner.o token.o testToken.o
 .SUFFIXES: .cpp .o
 
 $(TARGET): $(OBJS)

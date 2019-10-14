@@ -7,6 +7,7 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
+#include <iostream>
 #include <map>
 #include <string>
 
@@ -29,6 +30,7 @@ private:
 public:
     Token(int id, int lineNum, std::string tokStr);
 
+    void printInstanceManager();
 };
 
 #endif
