@@ -21,7 +21,7 @@ void TestScanner::testTokenKeywords() {
 
     //Arbitrarily declare 3 tokens
     Token a(IDENTIFIER, "TokenA", 3);
-    Token b(DIGIT, "TokenB", 4);
+    Token b(INTEGER, "TokenB", 4);
     Token c(EOF___, "TokenC", 5);
 
     //Print Test info
@@ -47,7 +47,7 @@ void TestScanner::testPrintToken() {
 
     //Arbitrarily declare 3 tokens
     Token a(IDENTIFIER, "TokenA", 3);
-    Token b(DIGIT, "TokenB", 4);
+    Token b(INTEGER, "TokenB", 4);
     Token c(EOF___, "TokenC", 5);
 
     a.printToken();

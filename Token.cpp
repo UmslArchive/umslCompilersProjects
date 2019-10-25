@@ -39,7 +39,7 @@ std::string Token::getInstance() { return instance; }
 
 std::string Token::idName(int id) {
     switch(id) {
-        case DIGIT: return "DIGIT";
+        case INTEGER: return "INTEGER";
         case IDENTIFIER: return "IDENTIFIER";
         case EOF___: return "EOF___";
         case OPERATOR: return "OPERATOR";

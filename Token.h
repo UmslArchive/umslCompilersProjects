@@ -14,7 +14,7 @@
 #include <sstream>
 
 enum TokenID {
-    DIGIT,
+    INTEGER,
     IDENTIFIER,
     EOF___,
     OPERATOR,
