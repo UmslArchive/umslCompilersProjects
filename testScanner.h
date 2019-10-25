@@ -7,11 +7,19 @@
 #ifndef TEST_SCANNER_H
 #define TEST_SCANNER_H
 
+#include "Token.h"
+#include "Scanner.h"
+
 class TestScanner {
 private:
 
 public:
+    //Scanner test
+    void testScanner();
 
+    //Other tests
+    void runTokenTests();
+    void testTokenKeywords();
 };
 
 #endif

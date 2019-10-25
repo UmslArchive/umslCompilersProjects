@@ -7,7 +7,8 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
-#include <map>
+#include <iostream>
+#include <vector>
 #include <string>
 
 enum TokenID {
@@ -15,20 +16,33 @@ enum TokenID {
     IDENTIFIER,
     EOF___,
     OPERATOR,
+    KEYWORD,
     TOTAL
 };
 
 class Token {
 private:
-    int id, instance, lineNum;
-    std::string tokStr;
-    static std::map<std::string, int> instanceManager;
+    TokenID id;
+    int lineNum;
+    std::string instance;
 
-    void setInstance();
+    //This is used to sortof cheeze the scanner in a way that I can make a simpler finite-state-automata.
+    //After an the identifier token state is reached, the scanner will perform a check to see if it is
+    //a keyword, then modify the token to be returned accordingly.
+    static bool isInitialized;
+    static std::vector<std::string> keywords;
 
 public:
-    Token(int id, int lineNum, std::string tokStr);
+    //Constructor
+    Token(TokenID id, std::string instance, int lineNum);
 
+    //Accessors
+    TokenID getID();
+    int getLineNum();
+    std::string getInstance();
+
+    //Debug
+    void printKeywords();
 };
 
 #endif

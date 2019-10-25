@@ -4,7 +4,12 @@
 //Date:     10/20/19
 //-----------------------------------------------------------------------------
 
+#include "TestScanner.h"
+
 int main(int argc, char* argv[]) {
+
+    TestScanner tester;
+    tester.runTokenTests();
 
     return 0;
 }
