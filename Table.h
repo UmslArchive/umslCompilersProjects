@@ -7,10 +7,15 @@
 #ifndef TABLE_H
 #define TABLE_H
 
+#include <iostream>
+
 class Table {
 private:
 
 public:
+    void test() {
+        std::cout << "tableHello\n";
+    }
 
 };
 

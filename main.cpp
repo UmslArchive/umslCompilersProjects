@@ -14,9 +14,10 @@ int main(int argc, char* argv[]) {
     TestScanner tester;
 
     if(PRIMARY_TEST_ONLY == 1) {
-        tester.testScanner();
+        tester.primaryScannerTest();
     }
     else {
+        tester.primaryScannerTest();
         tester.runTokenTests();
     }
 

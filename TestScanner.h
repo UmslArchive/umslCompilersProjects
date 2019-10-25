@@ -10,9 +10,15 @@
 #include "Scanner.h"
 
 class TestScanner {
+private:
+    Scanner scanner;
+
 public:
+    //Constructor
+    TestScanner();
+
     //Primary scanner test
-    void testScanner();
+    void primaryScannerTest();
 
     //Other tests
     void runTokenTests();

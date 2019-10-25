@@ -5,9 +5,13 @@
 //-----------------------------------------------------------------------------
 #include "TestScanner.h"
 
-//Primary scanner test
-void TestScanner::testScanner() {
+//Constructor
+TestScanner::TestScanner()
+    : scanner(Scanner())
+{}
 
+//Primary scanner test
+void TestScanner::primaryScannerTest() {
 }
 
 //Run all token tests

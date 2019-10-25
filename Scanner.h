@@ -10,14 +10,15 @@
 #include "Table.h"
 #include "Token.h"
 
-#include <stack>
-
 class Scanner {
 private:
+    static Table FSA;
+
+    char readNextCharacter();
 
 public:
-    char readNextCharacter();
-    
+    Scanner();
+    Token getNextToken();
 };
 
 #endif
