@@ -18,7 +18,6 @@ int main(int argc, char* argv[]) {
     }
     else {
         tester.runTokenTests();
-        tester.testPrintToken();
     }
 
     return 0;

@@ -54,6 +54,7 @@ std::string Token::idName(int id) {
 //Debug
 void Token::printToken() {
     int columnSpacing = 23;
+
     std::stringstream ss;
     std::string idString;
     std::string instanceString;
@@ -63,21 +64,19 @@ void Token::printToken() {
     ss << "ID { " << id << ", " << idName(id) << " }";
     idString = ss.str();
 
-    //Clear ss buffer
-    ss.str("");
+    ss.str(""); //Clear ss buffer
 
     //Create instanceString
     ss << "INSTANCE { " << instance << " }";
     instanceString = ss.str();
 
-    //Clear ss buffer
-    ss.str("");
+    ss.str(""); //Clear ss buffer
 
     //Create lineNumString
     ss << "LINE# " << lineNum;
     lineNumString=  ss.str();
 
-    ss.str("");
+    //ss.str(""); //Clear ss buffer
 
     std::cout << std::left << std::setw(columnSpacing) << idString;
     std::cout << std::left << std::setw(columnSpacing) << instanceString;

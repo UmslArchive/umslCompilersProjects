@@ -13,6 +13,7 @@ void TestScanner::testScanner() {
 //Run all token tests
 void TestScanner::runTokenTests() {
     testTokenKeywords();
+    testPrintToken();
 }
 
 //Test to ensure that static member keywords is being initialized only once
@@ -35,15 +36,15 @@ void TestScanner::testTokenKeywords() {
     b.printKeywords();
     std::cout << c.getInstance() << ": ";
     c.printKeywords();
-    std::cout << std::endl;
+    std::cout << "=========" << std::endl;
 
     return;
 }
 
 void TestScanner::testPrintToken() {
     //Print test info
-    std::cout << "TEST: Tokens are properly being assigned values\n";
-    
+    std::cout << "\nTEST: Tokens are properly being assigned values\n---------\n";
+
     //Arbitrarily declare 3 tokens
     Token a(IDENTIFIER, "TokenA", 3);
     Token b(DIGIT, "TokenB", 4);
