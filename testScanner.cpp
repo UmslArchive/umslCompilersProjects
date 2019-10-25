@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------
 #include "TestScanner.h"
 
-//Scanner tests
+//Primary scanner test
 void TestScanner::testScanner() {
 
 }

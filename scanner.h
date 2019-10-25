@@ -7,10 +7,17 @@
 #ifndef SCANNER_H
 #define SCANNER_H
 
+#include "Table.h"
+#include "Token.h"
+
+#include <stack>
+
 class Scanner {
 private:
+    std::vector<Token> tokens;
 
 public:
+    char readNextCharacter();
 
 };
 

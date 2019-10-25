@@ -11,10 +11,8 @@
 #include "Scanner.h"
 
 class TestScanner {
-private:
-
 public:
-    //Scanner test
+    //Primary scanner test
     void testScanner();
 
     //Other tests

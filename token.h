@@ -30,7 +30,7 @@ private:
     //After an the identifier token state is reached, the scanner will perform a check to see if it is
     //a keyword, then modify the token to be returned accordingly.
     static bool isInitialized;
-    static std::vector<std::string> keywords;
+    static std::vector<std::string> keywords; //had to do it this way because c++98
 
 public:
     //Constructor
