@@ -9,6 +9,14 @@
 
 #include <iostream>
 
+enum States {
+
+};
+
+enum Alphabet {
+    
+};
+
 class Table {
 private:
 
@@ -16,7 +24,6 @@ public:
     void test() {
         std::cout << "tableHello\n";
     }
-
 };
 
 #endif
