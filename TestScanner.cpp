@@ -37,6 +37,7 @@ void TestScanner::testTokenKeywords() {
     std::cout << c.getInstance() << ": ";
     c.printKeywords();
     std::cout << "=========" << std::endl;
+    std::cout << "=========" << std::endl;
 
     return;
 }
@@ -53,4 +54,5 @@ void TestScanner::testPrintToken() {
     a.printToken();
     b.printToken();
     c.printToken();
+    std::cout << std::endl;
 }
