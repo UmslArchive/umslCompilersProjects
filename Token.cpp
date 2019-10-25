@@ -43,11 +43,22 @@ std::string Token::idName(int id) {
         case IDENTIFIER: return "IDENTIFIER";
         case EOF___: return "EOF___";
         case OPERATOR: return "OPERATOR";
-        case KEYWORD: return "KEYWORD";
+        case KWD_START: return "KWD_START";
+        case KWD_STOP: return "KWD_STOP";
+        case KWD_ITERATE: return "KWD_ITERATE";
+        case KWD_VOID: return "KWD_VOID";
+        case KWD_VAR: return "KWD_VAR";
+        case KWD_RETURN: return "KWD_RETURN";
+        case KWD_IN: return "KWD_IN";
+        case KWD_OUT: return "KWD_OUT";
+        case KWD_PROGRAM: return "KWD_PROGRAM";
+        case KWD_COND: return "KWD_COND";
+        case KWD_THEN: return "KWD_THEN";
+        case KWD_LET: return "KWD_LET";
         
         default:
             std::cerr << "ERROR: Invalid selection made in function idName(int id)" << std::endl;
-            return "INVALID";
+            return "INVALID_TOKEN_ID";
     }
 }
 

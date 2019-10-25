@@ -18,7 +18,21 @@ enum TokenID {
     IDENTIFIER,
     EOF___,
     OPERATOR,
-    KEYWORD,
+
+    //Keywords
+    KWD_START,
+    KWD_STOP,
+    KWD_ITERATE,
+    KWD_VOID,
+    KWD_VAR,
+    KWD_RETURN,
+    KWD_IN,
+    KWD_OUT,
+    KWD_PROGRAM,
+    KWD_COND,
+    KWD_THEN,
+    KWD_LET,
+    
     TOTAL
 };
 
