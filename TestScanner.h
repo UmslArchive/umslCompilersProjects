@@ -18,6 +18,7 @@ public:
     //Other tests
     void runTokenTests();
     void testTokenKeywords();
+    void testPrintToken();
 };
 
 #endif

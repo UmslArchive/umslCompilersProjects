@@ -1,3 +1,4 @@
 scanner
 *.o
 README.txt
+.vscode/*

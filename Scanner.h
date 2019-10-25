@@ -14,11 +14,10 @@
 
 class Scanner {
 private:
-    std::vector<Token> tokens;
 
 public:
     char readNextCharacter();
-
+    
 };
 
 #endif

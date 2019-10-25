@@ -10,6 +10,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <iomanip>
+#include <sstream>
 
 enum TokenID {
     DIGIT,
@@ -38,10 +40,12 @@ public:
 
     //Accessors
     TokenID getID();
+    std::string idName(int id);
     int getLineNum();
     std::string getInstance();
 
     //Debug
+    void printToken();
     void printKeywords();
 };
 

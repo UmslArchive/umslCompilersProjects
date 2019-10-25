@@ -37,7 +37,54 @@ TokenID Token::getID() { return id; }
 int Token::getLineNum() { return lineNum; }
 std::string Token::getInstance() { return instance; }
 
+std::string Token::idName(int id) {
+    switch(id) {
+        case DIGIT: return "DIGIT";
+        case IDENTIFIER: return "IDENTIFIER";
+        case EOF___: return "EOF___";
+        case OPERATOR: return "OPERATOR";
+        case KEYWORD: return "KEYWORD";
+        
+        default:
+            std::cerr << "ERROR: Invalid selection made in function idName(int id)" << std::endl;
+            return "INVALID";
+    }
+}
+
 //Debug
+void Token::printToken() {
+    int columnSpacing = 23;
+    std::stringstream ss;
+    std::string idString;
+    std::string instanceString;
+    std::string lineNumString;
+
+    //Create idString
+    ss << "ID { " << id << ", " << idName(id) << " }";
+    idString = ss.str();
+
+    //Clear ss buffer
+    ss.str("");
+
+    //Create instanceString
+    ss << "INSTANCE { " << instance << " }";
+    instanceString = ss.str();
+
+    //Clear ss buffer
+    ss.str("");
+
+    //Create lineNumString
+    ss << "LINE# " << lineNum;
+    lineNumString=  ss.str();
+
+    ss.str("");
+
+    std::cout << std::left << std::setw(columnSpacing) << idString;
+    std::cout << std::left << std::setw(columnSpacing) << instanceString;
+    std::cout << std::left << std::setw(columnSpacing) << lineNumString;
+    std::cout << std::endl;
+}
+
 void Token::printKeywords() {
     for(int i = 0; i < keywords.size(); ++i) {
         std::cout << keywords.at(i) << " ";

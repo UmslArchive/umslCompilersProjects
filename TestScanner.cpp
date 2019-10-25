@@ -39,3 +39,17 @@ void TestScanner::testTokenKeywords() {
 
     return;
 }
+
+void TestScanner::testPrintToken() {
+    //Print test info
+    std::cout << "TEST: Tokens are properly being assigned values\n";
+    
+    //Arbitrarily declare 3 tokens
+    Token a(IDENTIFIER, "TokenA", 3);
+    Token b(DIGIT, "TokenB", 4);
+    Token c(EOF___, "TokenC", 5);
+
+    a.printToken();
+    b.printToken();
+    c.printToken();
+}
