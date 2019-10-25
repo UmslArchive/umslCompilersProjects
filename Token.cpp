@@ -76,8 +76,7 @@ void Token::printToken() {
     ss << "LINE# " << lineNum;
     lineNumString=  ss.str();
 
-    //ss.str(""); //Clear ss buffer
-
+    //Print token
     std::cout << std::left << std::setw(columnSpacing) << idString;
     std::cout << std::left << std::setw(columnSpacing) << instanceString;
     std::cout << std::left << std::setw(columnSpacing) << lineNumString;
