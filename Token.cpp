@@ -94,7 +94,7 @@ void Token::printToken() {
     std::cout << std::endl;
 }
 
-void Token::printKeywords() {
+void Token::printKeywordVector() {
     for(int i = 0; i < keywords.size(); ++i) {
         std::cout << keywords.at(i) << " ";
     }

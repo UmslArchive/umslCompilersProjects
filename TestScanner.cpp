@@ -35,11 +35,11 @@ void TestScanner::testTokenKeywords() {
 
     //Print each token's keyword string vector
     std::cout << a.getInstance() << ": ";
-    a.printKeywords();
+    a.printKeywordVector();
     std::cout << b.getInstance() << ": ";
-    b.printKeywords();
+    b.printKeywordVector();
     std::cout << c.getInstance() << ": ";
-    c.printKeywords();
+    c.printKeywordVector();
     std::cout << "=========" << std::endl;
     std::cout << "=========" << std::endl;
 

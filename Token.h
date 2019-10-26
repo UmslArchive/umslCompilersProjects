@@ -60,7 +60,7 @@ public:
 
     //Debug
     void printToken();
-    void printKeywords();
+    void printKeywordVector();
 };
 
 #endif
