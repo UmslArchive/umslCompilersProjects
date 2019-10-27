@@ -12,6 +12,7 @@ TestScanner::TestScanner()
 
 //Primary scanner test
 void TestScanner::primaryScannerTest() {
+    scanner.getNextToken();
 }
 
 //Run all token tests
@@ -24,9 +25,9 @@ void TestScanner::runTokenTests() {
 void TestScanner::testTokenKeywords() {
 
     //Arbitrarily declare 3 tokens
-    Token a(IDENTIFIER, "TokenA", 3);
-    Token b(INTEGER, "TokenB", 4);
-    Token c(EOF___, "TokenC", 5);
+    Token a(IDENTIFIER_tk, "TokenA", 3);
+    Token b(INTEGER_tk, "TokenB", 4);
+    Token c(EOF_tk, "TokenC", 5);
 
     //Print Test info
     std::cout << "\nTEST: Token keywords vector is static" << std::endl <<
@@ -51,9 +52,9 @@ void TestScanner::testPrintToken() {
     std::cout << "\nTEST: Tokens are properly being assigned values\n---------\n";
 
     //Arbitrarily declare 3 tokens
-    Token a(IDENTIFIER, "TokenA", 3);
-    Token b(INTEGER, "TokenB", 4);
-    Token c(EOF___, "TokenC", 5);
+    Token a(IDENTIFIER_tk, "TokenA", 3);
+    Token b(INTEGER_tk, "TokenB", 4);
+    Token c(EOF_tk, "TokenC", 5);
 
     a.printToken();
     b.printToken();

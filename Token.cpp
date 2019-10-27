@@ -39,22 +39,22 @@ std::string Token::getInstance() { return instance; }
 
 std::string Token::idName(int id) {
     switch(id) {
-        case INTEGER: return "INTEGER";
-        case IDENTIFIER: return "IDENTIFIER";
-        case EOF___: return "EOF___";
-        case OPERATOR: return "OPERATOR";
-        case KWD_START: return "KWD_START";
-        case KWD_STOP: return "KWD_STOP";
-        case KWD_ITERATE: return "KWD_ITERATE";
-        case KWD_VOID: return "KWD_VOID";
-        case KWD_VAR: return "KWD_VAR";
-        case KWD_RETURN: return "KWD_RETURN";
-        case KWD_IN: return "KWD_IN";
-        case KWD_OUT: return "KWD_OUT";
-        case KWD_PROGRAM: return "KWD_PROGRAM";
-        case KWD_COND: return "KWD_COND";
-        case KWD_THEN: return "KWD_THEN";
-        case KWD_LET: return "KWD_LET";
+        case INTEGER_tk: return "INTEGER_tk";
+        case IDENTIFIER_tk: return "IDENTIFIER_tk";
+        case EOF_tk: return "EOF_tk";
+        case OPERATOR_tk: return "OPERATOR_tk";
+        case KWD_START_tk: return "KWD_START_tk";
+        case KWD_STOP_tk: return "KWD_STOP_tk";
+        case KWD_ITERATE_tk: return "KWD_ITERATE_tk";
+        case KWD_VOID_tk: return "KWD_VOID_tk";
+        case KWD_VAR_tk: return "KWD_VAR";
+        case KWD_RETURN_tk: return "KWD_RETURN_tk";
+        case KWD_IN_tk: return "KWD_IN_tk";
+        case KWD_OUT_tk: return "KWD_OUT_tk";
+        case KWD_PROGRAM_tk: return "KWD_PROGRAM_tk";
+        case KWD_COND_tk: return "KWD_COND_tk";
+        case KWD_THEN_tk: return "KWD_THEN_tk";
+        case KWD_LET_tk: return "KWD_LET_tk";
         
         default:
             std::cerr << "ERROR: Invalid selection made in function idName(int id)" << std::endl;
@@ -64,7 +64,7 @@ std::string Token::idName(int id) {
 
 //Debug
 void Token::printToken() {
-    int columnSpacing = 23;
+    int columnSpacing = 25;
 
     std::stringstream ss;
     std::string idString;

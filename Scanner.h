@@ -15,7 +15,6 @@ private:
     static Table FSA;
 
     char readNextCharacter();
-    void getNextState(States currentState, char nextChar);
 public:
     Scanner();
     Token getNextToken();

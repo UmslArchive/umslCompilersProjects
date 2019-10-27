@@ -9,5 +9,9 @@
 Table Scanner::FSA = Table();
 
 Scanner::Scanner() {
-    FSA.test();
+
+}
+
+Token Scanner::getNextToken() {
+    return Token(TokenID::EOF_tk, "hi", 3);
 }
