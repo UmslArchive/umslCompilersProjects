@@ -11,7 +11,7 @@ Table Scanner::FSA = Table();
 
 //Constructor
 Scanner::Scanner() 
-:fileData(""), lineCount(0)
+:fileData(""), lineCount(1)
 {}
 
 
@@ -39,8 +39,7 @@ Token Scanner::getNextToken() {
     while(1) {
        
         //Check table
-        if(currentChar != 0)
-            currentState = FSA.lookup(currentState, currentChar);
+        currentState = FSA.lookup(currentState, currentChar);
 
         //DEBUG
         //std::cout << "currentState:" << currentState << " currentChar: " << (int)currentChar << std::endl;
@@ -49,7 +48,7 @@ Token Scanner::getNextToken() {
         std::cout << ""; //Please explain to me why this infinite loops without this here.
 
         //Check for a final state:
-        if(currentState == FIN_EOF_st) {
+        if(currentState == FIN_EOF_st || currentChar == 0) {
             return Token(EOF_tk, "EOF", lineCount);
         }
 
@@ -100,7 +99,7 @@ char Scanner::readNextCharacter() {
         //Ignore newlines
         if(c == '\n') {
             lineCount++;
-            return -1;
+            //return -1;
         }
 
         //Ignore comments
