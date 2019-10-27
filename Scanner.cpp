@@ -13,5 +13,5 @@ Scanner::Scanner() {
 }
 
 Token Scanner::getNextToken() {
-    return Token(TokenID::EOF_tk, "hi", 3);
+    return Token(EOF_tk, "hi", 3);
 }
