@@ -11,7 +11,8 @@ bool Table::isInitialized = false;
 
 //Constructor
 Table::Table()
-    : sigma(std::map<char, int>()), fsaTable(std::vector< std::vector<int> >(TOTAL_st, std::vector<int>()))
+    :   sigma(std::map<char, int>()), 
+        fsaTable(std::vector< std::vector<int> >(TOTAL_st, std::vector<int>()))
 {       
 
         //Init sigma
@@ -62,7 +63,7 @@ State Table::lookup(State state, char character) {
     if(sigma[characterCategory] == 0)
         return ERROR_st;
 
-    return (State)fsaTable[state][sigma[characterCategory] - 1];
+    return (State)fsaTable [ state ] [ sigma[characterCategory] - 1 ];
 }
 
 void Table::initSigma() {
