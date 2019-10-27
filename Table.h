@@ -40,7 +40,7 @@ private:
     static std::map<char, int> sigma;
 
     //2D table (vector of vectors)
-    static std::vector<std::vector<int>> fsaTable;
+    static std::vector< std::vector<int> > fsaTable;
 
     void buildFsaTable();
 
