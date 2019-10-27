@@ -205,12 +205,13 @@ void Table::buildFsaTable() {
         fsaTable[GT_EQ_st][sigma['W'] - 1] = FIN_OP_st;
         fsaTable[GT_EQ_st][sigma['E'] - 1] = FIN_OP_st;
 
-        for(int i = 0; i < fsaTable.size(); ++i ) {
+        //Print the table
+        /* for(int i = 0; i < fsaTable.size(); ++i ) {
             for(int j = 0; j < fsaTable[0].size(); ++j) {
                 std::cout << fsaTable[i][j] << " ";
             }
             std::cout << std::endl;
-        }
+        } */
     }
 }
 

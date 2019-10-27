@@ -12,6 +12,9 @@ TestScanner::TestScanner()
 
 //Primary scanner test
 void TestScanner::primaryScannerTest() {
+    while() {
+
+    }
     scanner.getNextToken();
 }
 

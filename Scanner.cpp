@@ -15,3 +15,7 @@ Scanner::Scanner() {
 Token Scanner::getNextToken() {
     return Token(EOF_tk, "hi", 3);
 }
+
+char Scanner::readNextCharacter() {
+    
+}

@@ -35,8 +35,9 @@ enum State {
 
 class Table {
 private:
-    //Column mapping
     static bool isInitialized;
+    
+    //Column mapping
     static std::map<char, int> sigma;
 
     //2D table (vector of vectors)
@@ -50,6 +51,9 @@ public:
     Table();
 
     State lookup(State state, char character);
+
+
+    void testLookup();
 };
 
 #endif
