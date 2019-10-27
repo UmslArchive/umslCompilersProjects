@@ -9,7 +9,7 @@
 //Static init
 bool Table::isInitialized = false;
 std::map<char, int> Table::sigma;
-std::vector<std::vector<int>> Table::fsaTable;
+std::vector< std::vector<int> > Table::fsaTable;
 
 //Constructor
 Table::Table() {    
