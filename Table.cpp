@@ -6,7 +6,7 @@
 
 #include "Table.h"
 
-//Static init
+//Static inits
 bool Table::isInitialized = false;
 std::map<char, int> Table::sigma;
 std::vector< std::vector<int> > Table::fsaTable;
@@ -18,8 +18,46 @@ Table::Table() {
 
         //Build the table
         buildFsaTable();
-        
+
         isInitialized = true;
+}
+
+State Table::lookup(State state, char character) {
+    char characterCategory;
+
+    //Set category from character parameter for use in sigma:
+
+    //digit
+    if(character >= 48 && character <= 57)
+        characterCategory = 'D';
+    
+    //alpha
+    else if(character >= 97 && character <= 122)
+        characterCategory = 'A';
+    
+    //whitespace
+    else if(character == ' ' || character == '\t' || character == '\n')
+        characterCategory = 'W';
+
+    //otherOps
+    else if(character == ':' || character == '+' || character == '-' || 
+            character == '*' || character == '/' || character == '%' ||
+            character == '.' || character == '(' || character == ')' ||
+            character == ',' || character == '{' || character == '}' ||
+            character == ';' || character == '[' || character == ']'    )
+    {
+        characterCategory = 'O';
+    }
+
+    //specOps or invalid
+    else
+        characterCategory = character;
+
+    //Check characterCategory validity (sigma[key] returns 0 if key not in map)
+    if(sigma[characterCategory] == 0)
+        return ERROR_st;
+
+    return (State)fsaTable[state][sigma[characterCategory] - 1];
 }
 
 void Table::initSigma() {

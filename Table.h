@@ -49,7 +49,7 @@ public:
     //Constructor
     Table();
 
-    State getNextState(State currentState, char nextChar);
+    State lookup(State state, char character);
 };
 
 #endif
