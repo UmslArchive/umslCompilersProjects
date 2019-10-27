@@ -10,6 +10,8 @@
 #include "Table.h"
 #include "Token.h"
 
+#include <limits>
+
 class Scanner {
 private:
     //Finite State Automaton transition table

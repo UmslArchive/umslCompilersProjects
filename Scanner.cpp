@@ -21,10 +21,13 @@ Token Scanner::getNextToken() {
     TokenID tid;
     std::string tokenInstance = "";
 
+    //Bool to store if first call to this function
     static bool first = true;
 
     //Reset state
     currentState = START_st;
+
+    //Get first character of file
     if(first) {
         currentChar = readNextCharacter();
         first = false;
@@ -34,7 +37,6 @@ Token Scanner::getNextToken() {
 
     //Loop until a finish state is reached
     while(1) {
-
         //Check for a final state:
         if(currentState == FIN_EOF_st) {
             tid = EOF_tk;
@@ -77,10 +79,9 @@ Token Scanner::getNextToken() {
         while(currentChar == -1) {
             currentChar = readNextCharacter();
         }
-        //std::cout << "currentState:" << currentState << std::endl;;
 
-        /* count++;
-        if(count > 30) finish = true; */
+        //DEBUG
+        //std::cout << "currentState:" << currentState << std::endl;;
     }
     
     return Token(tid, tokenInstance , lineCount);
@@ -98,7 +99,7 @@ char Scanner::readNextCharacter() {
 
         //Ignore comments
         if(c == '#') {
-            fileDataParser.ignore(500, '\n');
+            fileDataParser.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             lineCount++;
             return -1;
         }
