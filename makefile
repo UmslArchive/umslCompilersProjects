@@ -5,7 +5,7 @@
 ##################################################
 
 CC = g++
-CFLAGS = -I . -g
+CFLAGS = -g
 TARGET = scanner
 OBJS = main.o Scanner.o Table.o TestScanner.o Token.o
 .SUFFIXES: .cpp .o
@@ -13,7 +13,7 @@ OBJS = main.o Scanner.o Table.o TestScanner.o Token.o
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
 
-.c.o:
+.cpp.o:
 	$(CC) $(CFLAGS) -c $<
 
 .PHONY: clean

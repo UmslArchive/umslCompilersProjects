@@ -16,7 +16,7 @@ Scanner::Scanner()
 
 
 Token Scanner::getNextToken() {
-    /* std::string tokenInstance = "";
+    std::string tokenInstance = "";
 
     //Reset state
     currentState = START_st;
@@ -28,9 +28,9 @@ Token Scanner::getNextToken() {
         tokenInstance.push_back(currentChar);
         currentState = FSA.lookup(currentState, currentChar);
         finish = true;
-    } */
+    }
     
-    return Token(EOF_tk, "tokenInstance", 3);
+    return Token(EOF_tk, tokenInstance , 3);
 }
 
 char Scanner::readNextCharacter() {

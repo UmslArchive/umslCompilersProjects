@@ -17,8 +17,8 @@ int main(int argc, char* argv[]) {
         tester.primaryScannerTest("");
     }
     else {
-        tester.primaryScannerTest("");
         tester.runTokenTests();
+        tester.primaryScannerTest("");
     }
 
     return 0;
