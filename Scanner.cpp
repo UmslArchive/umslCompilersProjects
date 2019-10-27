@@ -11,7 +11,7 @@ Table Scanner::FSA = Table();
 
 //Constructor
 Scanner::Scanner() 
-: fileDataParser(std::stringstream()), fileData(""), lineCount(0)
+:fileData(""), lineCount(0)
 {}
 
 
