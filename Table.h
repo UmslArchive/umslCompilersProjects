@@ -43,6 +43,7 @@ private:
     static std::vector< std::vector<int> > fsaTable;
 
     void buildFsaTable();
+    void initSigma();
 
 public:
     //Constructor
