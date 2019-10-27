@@ -33,7 +33,9 @@ enum TokenID {
     KWD_THEN_tk,
     KWD_LET_tk,
     
-    TOTAL_tk
+    TOTAL_tk,
+
+    ERROR_tk
 };
 
 class Token {

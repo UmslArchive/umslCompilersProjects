@@ -23,6 +23,10 @@ void TestScanner::primaryScannerTest(std::string fileData) {
         if(currentToken.getID() == EOF_tk) {
             finished = true;
         }
+
+        if(currentToken.getID() == ERROR_tk) {
+            finished = true;
+        }
     }
 }
 

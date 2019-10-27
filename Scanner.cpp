@@ -37,6 +37,12 @@ Token Scanner::getNextToken() {
 
     //Loop until a finish state is reached
     while(1) {
+        //DEBUG
+        std::cout << "currentState:" << currentState << std::endl;
+        
+        //Check table
+        currentState = FSA.lookup(currentState, currentChar);
+
         //Check for a final state:
         if(currentState == FIN_EOF_st) {
             tid = EOF_tk;
@@ -44,7 +50,7 @@ Token Scanner::getNextToken() {
             break;
         }
 
-        if( currentState == FIN_IDENT_st) {
+        if(currentState == FIN_IDENT_st) {
             tid = IDENTIFIER_tk;
             break;
         }
@@ -61,11 +67,9 @@ Token Scanner::getNextToken() {
 
         if(currentState == ERROR_st) {
             std::cerr << "ERROR on line#" << lineCount << std::endl;
-            break;
+            return Token(ERROR_tk, "ERROR_TOKEN", lineCount);
         }
 
-        //Check table
-        currentState = FSA.lookup(currentState, currentChar);
 
         //Only push onto tokenInstance string if exited start state
         if(currentState != START_st) {
@@ -80,8 +84,7 @@ Token Scanner::getNextToken() {
             currentChar = readNextCharacter();
         }
 
-        //DEBUG
-        //std::cout << "currentState:" << currentState << std::endl;;
+
     }
     
     return Token(tid, tokenInstance , lineCount);
