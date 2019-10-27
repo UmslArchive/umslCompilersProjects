@@ -21,13 +21,22 @@ Token Scanner::getNextToken() {
     //Reset state
     currentState = START_st;
 
+    int count = 0;
+
     //Loop until a finish state is reached
     bool finish = false;
     while(!finish) {
         char currentChar = readNextCharacter();
         tokenInstance.push_back(currentChar);
         currentState = FSA.lookup(currentState, currentChar);
-        finish = true;
+        std::cout << "currentState:" << currentState << std::endl;;
+        
+        if(currentState == FIN_EOF_st || currentState == FIN_IDENT_st || currentState == FIN_OP_st || currentState == FIN_INT_st) {
+            finish = true;
+        }
+
+        count++;
+        if(count > 30) finish = true;
     }
     
     return Token(EOF_tk, tokenInstance , 3);
@@ -36,11 +45,12 @@ Token Scanner::getNextToken() {
 char Scanner::readNextCharacter() {
     char c;
     if(fileDataParser.get(c)) {
-        std::cout << c;
+        //std::cout << c;
         return c;
     }
 
     if(fileDataParser.eof()) {
+        currentState = FIN_EOF_st;
         std::cout << "EOF\n";
         return -1;
     }

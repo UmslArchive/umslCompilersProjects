@@ -8,11 +8,12 @@
 
 //Static inits
 bool Table::isInitialized = false;
-std::map<char, int> Table::sigma;
-std::vector< std::vector<int> > Table::fsaTable;
 
 //Constructor
-Table::Table() {  
+Table::Table()
+    : sigma(std::map<char, int>()), fsaTable(std::vector< std::vector<int> >(TOTAL_st, std::vector<int>()))
+{       
+
         //Init sigma
         initSigma();
 
@@ -52,6 +53,8 @@ State Table::lookup(State state, char character) {
     //specOps or invalid
     else
         characterCategory = character;
+    std::cout << "sigSize" << sigma.size() << std::endl;
+    std::cout << "charCat:" << characterCategory << " sigmaVal:" << sigma[characterCategory] << std::endl;
 
     //Check characterCategory validity (sigma[key] returns 0 if key not in map)
     if(sigma[characterCategory] == 0)
@@ -65,9 +68,7 @@ void Table::initSigma() {
     //0 is returned if the key is not found.
     int value = 1;
 
-    if(!isInitialized) {
-        sigma = std::map<char, int>();
-        
+    if(!isInitialized) {        
         //As the scanner reads in the file character by character, the character
         //will be categorized into one of these 7 categories. Ended up needing
         //to do this because otherwise the state transition table would've been
@@ -97,9 +98,10 @@ void Table::initSigma() {
 
 void Table::buildFsaTable() {
     if(!isInitialized) {
-        //Allocate space
+
+        //Allocate columns
         for(int i = 0; i < TOTAL_st; ++i) {
-            fsaTable.push_back(std::vector<int>(sigma.size()));
+            fsaTable[i] = std::vector<int>(sigma.size());
         }
 
         //Add state transitions:
@@ -206,12 +208,12 @@ void Table::buildFsaTable() {
         fsaTable[GT_EQ_st][sigma['E'] - 1] = FIN_OP_st;
 
         //Print the table
-        /* for(int i = 0; i < fsaTable.size(); ++i ) {
+        for(int i = 0; i < fsaTable.size(); ++i ) {
             for(int j = 0; j < fsaTable[0].size(); ++j) {
                 std::cout << fsaTable[i][j] << " ";
             }
             std::cout << std::endl;
-        } */
+        }
     }
 }
 

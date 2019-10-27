@@ -38,10 +38,10 @@ private:
     static bool isInitialized;
     
     //Column mapping
-    static std::map<char, int> sigma;
+    std::map<char, int> sigma;
 
     //2D table (vector of vectors)
-    static std::vector< std::vector<int> > fsaTable;
+    std::vector< std::vector<int> > fsaTable;
 
     void buildFsaTable();
     void initSigma();
