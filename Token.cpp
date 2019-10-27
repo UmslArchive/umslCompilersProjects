@@ -85,7 +85,7 @@ void Token::printToken() {
 
     //Create lineNumString
     ss << "LINE# " << lineNum;
-    lineNumString=  ss.str();
+    lineNumString = ss.str();
 
     //Print token
     std::cout << std::left << std::setw(columnSpacing) << idString;

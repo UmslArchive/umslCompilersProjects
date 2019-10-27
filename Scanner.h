@@ -12,7 +12,15 @@
 
 class Scanner {
 private:
+    //Finite State Automaton transition table
     static Table FSA;
+    
+    //File data to be parsed.
+    std::string fileData;
+    int lineCount;
+
+    //Stream objects
+    std::stringstream fileDataParser;
 
     char readNextCharacter();
 
@@ -20,6 +28,7 @@ private:
 public:
     Scanner();
     Token getNextToken();
+    void loadFileData(std::string fileData);
 };
 
 #endif

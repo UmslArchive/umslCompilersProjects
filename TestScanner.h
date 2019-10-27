@@ -18,7 +18,7 @@ public:
     TestScanner();
 
     //Primary scanner test
-    void primaryScannerTest();
+    void primaryScannerTest(std::string fileData);
 
     //Other tests
     void runTokenTests();

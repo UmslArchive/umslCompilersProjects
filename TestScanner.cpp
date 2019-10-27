@@ -11,11 +11,20 @@ TestScanner::TestScanner()
 {}
 
 //Primary scanner test
-void TestScanner::primaryScannerTest() {
-    while() {
+void TestScanner::primaryScannerTest(std::string fileData) {
+    std::string mockFile = " begin \n#testcomment other shit too\n\n5<3 5 <= 3colbyid3nt             \n";
+    scanner.loadFileData(mockFile);
 
+    bool finished = false;
+    while(!finished) {
+        Token currentToken = scanner.getNextToken();
+
+        currentToken.printToken();
+
+        if(currentToken.getID() == EOF_tk) {
+            finished = true;
+        }
     }
-    scanner.getNextToken();
 }
 
 //Run all token tests

@@ -7,17 +7,17 @@
 #include "TestScanner.h"
 
 //Change this to either run all tests or just the scanner test. [0, 1]
-#define PRIMARY_TEST_ONLY 0
+#define PRIMARY_TEST_ONLY 1
 
 int main(int argc, char* argv[]) {
 
     TestScanner tester;
 
     if(PRIMARY_TEST_ONLY == 1) {
-        tester.primaryScannerTest();
+        tester.primaryScannerTest("");
     }
     else {
-        tester.primaryScannerTest();
+        tester.primaryScannerTest("");
         tester.runTokenTests();
     }
 
