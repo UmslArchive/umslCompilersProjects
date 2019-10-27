@@ -7,7 +7,6 @@
 
 //Constructor
 TestScanner::TestScanner()
-    : scanner(Scanner())
 {}
 
 //Primary scanner test
