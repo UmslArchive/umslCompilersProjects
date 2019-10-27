@@ -32,6 +32,7 @@ Token Scanner::getNextToken() {
         //Check for final states:
         if(currentState == FIN_EOF_st) {
             tid = EOF_tk;
+            tokenInstance = "EOF";
             break;
         }
 
@@ -51,13 +52,25 @@ Token Scanner::getNextToken() {
         }
 
         if(currentState == ERROR_st) {
-            std::cout << "ERROR\n";
+            std::cerr << "ERROR on line#" << lineCount << std::endl;
             break;
         }
 
-        tokenInstance.push_back(currentChar);
+        //Check table
         currentState = FSA.lookup(currentState, currentChar);
+
+        //Only push onto tokenInstance string if exited start state
+        if(currentState != START_st) {
+            tokenInstance.push_back(currentChar);
+        }
+
+        //Read 
         currentChar = readNextCharacter();
+
+        //Ignore comments
+        while(currentChar == -1) {
+            currentChar = readNextCharacter();
+        }
         //std::cout << "currentState:" << currentState << std::endl;;
 
         /* count++;
@@ -70,13 +83,18 @@ Token Scanner::getNextToken() {
 char Scanner::readNextCharacter() {
     char c;
     if(fileDataParser.get(c)) {
-        //std::cout << c;
-        if(c == '\n')
-            lineCount++;
 
+        //Ignore newlines
+        if(c == '\n') {
+            lineCount++;
+            return -1;
+        }
+
+        //Ignore comments
         if(c == '#') {
             fileDataParser.ignore(500, '\n');
             lineCount++;
+            return -1;
         }
 
         return c;
@@ -84,8 +102,7 @@ char Scanner::readNextCharacter() {
 
     if(fileDataParser.eof()) {
         currentState = FIN_EOF_st;
-        std::cout << "EOF\n";
-        return -1;
+        return c;
     }
     
    return 0;

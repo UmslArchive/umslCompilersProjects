@@ -11,7 +11,7 @@ TestScanner::TestScanner()
 
 //Primary scanner test
 void TestScanner::primaryScannerTest(std::string fileData) {
-    std::string mockFile = " begin \n#testcomment other shit too\n\n5<3 5 <= 3colbyid3nt             \n";
+    std::string mockFile = " begin \n#testcomment other shit too\n\n5<3 5 <= 3colbyid3nt            \n";
     scanner.loadFileData(mockFile);
 
     bool finished = false;
