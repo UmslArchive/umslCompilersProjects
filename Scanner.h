@@ -20,6 +20,7 @@ private:
     int lineCount;
 
     //Stream objects
+    char currentChar;
     std::stringstream fileDataParser;
 
     char readNextCharacter();

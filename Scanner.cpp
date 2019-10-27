@@ -21,15 +21,21 @@ Token Scanner::getNextToken() {
     TokenID tid;
     std::string tokenInstance = "";
 
+    static bool first = true;
+
     //Reset state
     currentState = START_st;
-    char currentChar = readNextCharacter();
+    if(first) {
+        currentChar = readNextCharacter();
+        first = false;
+    }
+        
     int count = 0;
 
     //Loop until a finish state is reached
     while(1) {
 
-        //Check for final states:
+        //Check for a final state:
         if(currentState == FIN_EOF_st) {
             tid = EOF_tk;
             tokenInstance = "EOF";
