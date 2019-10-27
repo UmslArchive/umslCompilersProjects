@@ -16,36 +16,69 @@ Scanner::Scanner()
 
 
 Token Scanner::getNextToken() {
+
+    //Token attributes
+    TokenID tid;
     std::string tokenInstance = "";
 
     //Reset state
     currentState = START_st;
-
+    char currentChar = readNextCharacter();
     int count = 0;
 
     //Loop until a finish state is reached
-    bool finish = false;
-    while(!finish) {
-        char currentChar = readNextCharacter();
-        tokenInstance.push_back(currentChar);
-        currentState = FSA.lookup(currentState, currentChar);
-        std::cout << "currentState:" << currentState << std::endl;;
-        
-        if(currentState == FIN_EOF_st || currentState == FIN_IDENT_st || currentState == FIN_OP_st || currentState == FIN_INT_st) {
-            finish = true;
+    while(1) {
+
+        //Check for final states:
+        if(currentState == FIN_EOF_st) {
+            tid = EOF_tk;
+            break;
         }
 
-        count++;
-        if(count > 30) finish = true;
+        if( currentState == FIN_IDENT_st) {
+            tid = IDENTIFIER_tk;
+            break;
+        }
+
+        if(currentState == FIN_OP_st ) {
+            tid = OPERATOR_tk;
+            break;
+        }
+
+        if(currentState == FIN_INT_st) {
+            tid = INTEGER_tk;
+            break;
+        }
+
+        if(currentState == ERROR_st) {
+            std::cout << "ERROR\n";
+            break;
+        }
+
+        tokenInstance.push_back(currentChar);
+        currentState = FSA.lookup(currentState, currentChar);
+        currentChar = readNextCharacter();
+        //std::cout << "currentState:" << currentState << std::endl;;
+
+        /* count++;
+        if(count > 30) finish = true; */
     }
     
-    return Token(EOF_tk, tokenInstance , 3);
+    return Token(tid, tokenInstance , lineCount);
 }
 
 char Scanner::readNextCharacter() {
     char c;
     if(fileDataParser.get(c)) {
         //std::cout << c;
+        if(c == '\n')
+            lineCount++;
+
+        if(c == '#') {
+            fileDataParser.ignore(500, '\n');
+            lineCount++;
+        }
+
         return c;
     }
 

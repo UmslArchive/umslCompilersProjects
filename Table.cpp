@@ -53,8 +53,10 @@ State Table::lookup(State state, char character) {
     //specOps or invalid
     else
         characterCategory = character;
-    std::cout << "sigSize" << sigma.size() << std::endl;
-    std::cout << "charCat:" << characterCategory << " sigmaVal:" << sigma[characterCategory] << std::endl;
+    
+    //DEBUG
+    /* std::cout << "sigSize" << sigma.size() << std::endl;
+    std::cout << "charCat:" << characterCategory << " sigmaVal:" << sigma[characterCategory] << std::endl;  */
 
     //Check characterCategory validity (sigma[key] returns 0 if key not in map)
     if(sigma[characterCategory] == 0)
@@ -208,12 +210,12 @@ void Table::buildFsaTable() {
         fsaTable[GT_EQ_st][sigma['E'] - 1] = FIN_OP_st;
 
         //Print the table
-        for(int i = 0; i < fsaTable.size(); ++i ) {
+        /* for(int i = 0; i < fsaTable.size(); ++i ) {
             for(int j = 0; j < fsaTable[0].size(); ++j) {
                 std::cout << fsaTable[i][j] << " ";
             }
             std::cout << std::endl;
-        }
+        } */
     }
 }
 

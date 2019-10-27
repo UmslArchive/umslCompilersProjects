@@ -78,7 +78,7 @@ void Token::printToken() {
     ss.str(""); //Clear ss buffer
 
     //Create instanceString
-    ss << "INSTANCE { " << instance << " }";
+    ss << "INSTANCE { \"" << instance << "\" }";
     instanceString = ss.str();
 
     ss.str(""); //Clear ss buffer
