@@ -37,17 +37,20 @@ Token Scanner::getNextToken() {
 
     //Loop until a finish state is reached
     while(1) {
-        //DEBUG
-        std::cout << "currentState:" << currentState << std::endl;
-        
+       
         //Check table
-        currentState = FSA.lookup(currentState, currentChar);
+        if(currentChar != 0)
+            currentState = FSA.lookup(currentState, currentChar);
+
+        //DEBUG
+        //std::cout << "currentState:" << currentState << " currentChar: " << (int)currentChar << std::endl;
+        
+        
+        std::cout << ""; //Please explain to me why this infinite loops without this here.
 
         //Check for a final state:
         if(currentState == FIN_EOF_st) {
-            tid = EOF_tk;
-            tokenInstance = "EOF";
-            break;
+            return Token(EOF_tk, "EOF", lineCount);
         }
 
         if(currentState == FIN_IDENT_st) {
