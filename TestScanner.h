@@ -11,9 +11,9 @@
 
 class TestScanner {
 private:
-    Scanner scanner;
 
 public:
+    Scanner scanner;
     //Constructor
     TestScanner();
 
