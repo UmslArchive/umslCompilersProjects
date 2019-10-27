@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <map>
+#include <vector>
 
 //Rows
 enum State {
@@ -22,12 +23,14 @@ enum State {
     EQ_st,
     LT_EQ_st,
     GT_EQ_st,
+
+    TOTAL_st, //placed here since there rest are final states
+     
     FIN_EOF_st,
     FIN_IDENT_st,
     FIN_INT_st,
     FIN_OP_st,
-    ERROR_st,
-    TOTAL_st
+    ERROR_st
 };
 
 class Table {
@@ -36,13 +39,16 @@ private:
     static bool isInitialized;
     static std::map<char, int> sigma;
 
-    State currentState;
+    //2D table (vector of vectors)
+    static std::vector<std::vector<int>> fsaTable;
+
+    void buildFsaTable();
 
 public:
     //Constructor
     Table();
 
-    State getNextState(char nextChar);
+    State getNextState(State currentState, char nextChar);
 };
 
 #endif
