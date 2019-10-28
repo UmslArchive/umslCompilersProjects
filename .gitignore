@@ -3,4 +3,4 @@ scanner
 README.txt
 .vscode/*
 *.fs19
-*fs*
+*.fsx19
