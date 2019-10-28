@@ -64,7 +64,7 @@ std::string Token::idName(int id) {
 
 //Debug
 void Token::printToken() {
-    int columnSpacing = 25;
+    int columnSpacing = 27;
 
     std::stringstream ss;
     std::string idString;

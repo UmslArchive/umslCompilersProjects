@@ -131,7 +131,13 @@ Token Scanner::getNextToken() {
 
     }
     
+    //If a token happens to be next to a newline linecount gets incremented
+    //too early. This resolves that issue.
+    if(currentChar == '\n')
+        return Token(tid, tokenInstance , lineCount - 1);
+    
     return Token(tid, tokenInstance , lineCount);
+
 }
 
 char Scanner::readNextCharacter() {
