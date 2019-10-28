@@ -123,6 +123,64 @@ Token Scanner::getNextToken() {
         //Read 
         currentChar = readNextCharacter();
 
+        //Need this to return last token before EOF
+        if(currentChar == 0) {
+            //Check for a final state:
+
+            if(currentState == FIN_IDENT_st) {
+                tid = IDENTIFIER_tk;
+
+                //Check for keyword match
+                if(dummyToken.findKeyword(tokenInstance) != "NO_MATCH") {
+                    if(tokenInstance.compare("start") == 0)
+                        tid = KWD_START_tk;
+                    
+                    if(tokenInstance.compare("stop") == 0)
+                        tid = KWD_STOP_tk;
+                    
+                    if(tokenInstance.compare("iterate") == 0)
+                        tid = KWD_ITERATE_tk;
+                    
+                    if(tokenInstance.compare("void") == 0)
+                        tid = KWD_VOID_tk;
+
+                    if(tokenInstance.compare("var") == 0)
+                        tid = KWD_VAR_tk;
+
+                    if(tokenInstance.compare("return") == 0)
+                        tid = KWD_RETURN_tk;
+                    
+                    if(tokenInstance.compare("in") == 0)
+                        tid = KWD_IN_tk;
+
+                    if(tokenInstance.compare("out") == 0)
+                        tid = KWD_OUT_tk;
+
+                    if(tokenInstance.compare("program") == 0)
+                        tid = KWD_PROGRAM_tk;
+
+                    if(tokenInstance.compare("cond") == 0)
+                        tid = KWD_COND_tk;
+
+                    if(tokenInstance.compare("then") == 0)
+                        tid = KWD_THEN_tk;
+
+                    if(tokenInstance.compare("let") == 0)
+                        tid = KWD_LET_tk;
+                }
+            }
+
+            if(currentState == FIN_OP_st ) {
+                tid = OPERATOR_tk;
+            }
+
+            if(currentState == FIN_INT_st) {
+                tid = INTEGER_tk;
+            }
+
+            return Token(tid, tokenInstance, lineCount);
+        }
+
         //Ignore comments
         while(currentChar == -1) {
             currentChar = readNextCharacter();

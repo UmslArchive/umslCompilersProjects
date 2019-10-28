@@ -2,3 +2,4 @@ scanner
 *.o
 README.txt
 .vscode/*
+*.fs19
