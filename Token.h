@@ -58,6 +58,9 @@ public:
     int getLineNum();
     std::string getInstance();
 
+    //Utility
+    std::string findKeyword(std::string checkString);
+
     //Debug
     void printToken();
     void printKeywordVector();

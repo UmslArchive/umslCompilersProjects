@@ -102,3 +102,13 @@ void Token::printKeywordVector() {
 
     return;
 }
+
+
+std::string Token::findKeyword(std::string checkString) {
+    for(int i = 0; i < keywords.size(); ++i) {
+        if(checkString.compare(keywords[i]) == 0)
+            return keywords[i];
+    }
+
+    return "NO_MATCH";
+}
