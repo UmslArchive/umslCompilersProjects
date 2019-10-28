@@ -45,7 +45,8 @@ int main(int argc, char* argv[]) {
         success = true;
     }
 
-    std::cout << "FILEDATA:" << fileData << std::endl;
+    //DEBUG
+    //std::cout << "FILEDATA:" << fileData << std::endl;
 
 
     //Testing

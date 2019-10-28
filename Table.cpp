@@ -62,8 +62,10 @@ State Table::lookup(State state, char character) {
     //Check characterCategory validity (sigma[key] returns 0 if key not in map)
     if(sigma[characterCategory] == 0)
     {   
+        //EOF character is not an error to report. Program just ends
         if(character != 0)
             std::cerr << "ERROR:Illegal character input: '" << character << "'" << std::endl;
+
         return ERROR_st;
     }
         
