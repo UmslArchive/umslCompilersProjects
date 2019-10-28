@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
     TestScanner tester;
 
     if(PRIMARY_TEST_ONLY == 1) {
-        tester.primaryScannerTest("");
+        tester.primaryScannerTest("   start stop iterate void var return in out program cond then let\n=  <  > <= >= == :   +  -  *  /   %  . (  ) , { } ; [ ]\nx123 y x2\n123 2 768");
     }
     else {
         tester.runTokenTests();

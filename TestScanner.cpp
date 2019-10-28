@@ -11,7 +11,7 @@ TestScanner::TestScanner()
 
 //Primary scanner test
 void TestScanner::primaryScannerTest(std::string fileData) {
-    std::string mockFile = "   start stop iterate void var return in out program cond then let\n=  <  > <= >= == :   +  -  *  /   %  . (  ) , { } ; [ ]\nx123 y x2\n123 2 768";
+    std::string mockFile = fileData;
     scanner.loadFileData(mockFile);
 
     bool finished = false;
