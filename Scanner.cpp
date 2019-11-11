@@ -124,7 +124,7 @@ Token Scanner::getNextToken() {
         currentChar = readNextCharacter();
 
         //Need this to return last token before EOF
-        if(currentChar == 0) {
+        /* if(currentChar == 0) {
             //Check for a final state:
 
             if(currentState == FIN_IDENT_st) {
@@ -179,7 +179,7 @@ Token Scanner::getNextToken() {
             }
 
             return Token(tid, tokenInstance, lineCount);
-        }
+        } */
 
         //Ignore comments
         while(currentChar == -1) {
@@ -200,7 +200,8 @@ Token Scanner::getNextToken() {
 
 char Scanner::readNextCharacter() {
     char c;
-    if(fileDataParser.get(c)) {
+    //if(fileDataParser.get(c)) {
+        fileDataParser.get(c);
 
         //Ignore newlines
         if(c == '\n') {
@@ -215,15 +216,15 @@ char Scanner::readNextCharacter() {
             return -1;
         }
 
-        return c;
-    }
+        //return c;
+   // }
 
-    if(fileDataParser.eof()) {
+    /* if(fileDataParser.eof() && currentState == START_st) {
         currentState = FIN_EOF_st;
         return c;
-    }
+    } */
     
-   return 0;
+   return c;
     
 }
 
