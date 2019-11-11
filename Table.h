@@ -24,7 +24,7 @@ enum State {
     LT_EQ_st,
     GT_EQ_st,
 
-    TOTAL_st, //placed here since there rest are final states
+    TOTAL_st, //Total number of non-final states
      
     FIN_EOF_st,
     FIN_IDENT_st,
