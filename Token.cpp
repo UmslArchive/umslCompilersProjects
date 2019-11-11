@@ -72,7 +72,7 @@ void Token::printToken() {
     std::string lineNumString;
 
     //Create idString
-    ss << "ID { " << id << ", " << idName(id) << " }";
+    ss << "ID { " << std::setw(2) << std::setfill('0') << id << ", " << idName(id) << " }";
     idString = ss.str();
 
     ss.str(""); //Clear ss buffer
