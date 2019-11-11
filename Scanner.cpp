@@ -44,7 +44,7 @@ Token Scanner::getNextToken() {
         currentState = FSA.lookup(currentState, currentChar);
 
         //DEBUG
-        //std::cout << "currentState:" << currentState << " currentChar: " << (int)currentChar << std::endl;
+        std::cout << "currentState:" << currentState << " currentChar: " << (int)currentChar <<  "(" << currentChar << ")" << std::endl;
         
         
         std::cout << ""; //Please explain to me why this infinite loops without this here.
