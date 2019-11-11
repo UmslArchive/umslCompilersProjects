@@ -162,11 +162,6 @@ char Scanner::readNextCharacter() {
 
         return c;
    }
-
-    /* if(fileDataParser.eof() && currentState == START_st) {
-        currentState = FIN_EOF_st;
-        return c;
-    } */
     
    return 0;
     
