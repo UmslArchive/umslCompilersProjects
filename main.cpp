@@ -34,13 +34,13 @@ int main(int argc, char* argv[]) {
         //Get the file name.
         if(!parseArgs(argc, argv)) {
             std::cerr << "Error: Function: parseArgs(int, char**)" << std::endl;
-            return false;
+            return 0;
         }
 
         //Read entire file contents into fileString.
         if(!readFromFile(fileName)) {
             std::cerr << "Error: Function: readFromFile(std::string)" << std::endl;
-            return false;
+            return 0;
         }
         success = true;
     }
