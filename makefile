@@ -5,7 +5,7 @@
 ##################################################
 
 CC = g++
-CFLAGS = -g
+CFLAGS =
 TARGET = scanner
 OBJS = main.o Scanner.o Table.o TestScanner.o Token.o
 .SUFFIXES: .cpp .o
