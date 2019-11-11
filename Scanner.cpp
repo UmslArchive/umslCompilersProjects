@@ -45,9 +45,6 @@ Token Scanner::getNextToken() {
 
         //DEBUG
         //std::cout << "currentState:" << currentState << " currentChar: " << (int)currentChar <<  "(" << currentChar << ")" << std::endl;
-        
-        
-        std::cout << ""; //Please explain to me why this infinite loops without this here.
 
         //Check for a final state:
         if(currentState == FIN_EOF_st) {
