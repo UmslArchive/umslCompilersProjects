@@ -50,6 +50,9 @@ State Table::lookup(State state, char character) {
     {
         characterCategory = 'O';
     }
+    //eof
+    else if(character == 0)
+        characterCategory = 'E';
 
     //specOps or invalid
     else
