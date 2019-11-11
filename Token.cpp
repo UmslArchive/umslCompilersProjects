@@ -47,7 +47,7 @@ std::string Token::idName(int id) {
         case KWD_STOP_tk: return "KWD_STOP_tk";
         case KWD_ITERATE_tk: return "KWD_ITERATE_tk";
         case KWD_VOID_tk: return "KWD_VOID_tk";
-        case KWD_VAR_tk: return "KWD_VAR";
+        case KWD_VAR_tk: return "KWD_VAR_tk";
         case KWD_RETURN_tk: return "KWD_RETURN_tk";
         case KWD_IN_tk: return "KWD_IN_tk";
         case KWD_OUT_tk: return "KWD_OUT_tk";
