@@ -50,13 +50,13 @@ int main(int argc, char* argv[]) {
     //-----
 
     //Testing
-    TestScanner tester;
+    TestScanner scannerTester;
     if(PRIMARY_TEST_ONLY == 1) {
-        tester.primaryScannerTest(fileData);
+        scannerTester.primaryScannerTest(fileData);
     }
     else {
-        tester.runTokenTests();
-        tester.primaryScannerTest("");
+        scannerTester.runTokenTests();
+        scannerTester.primaryScannerTest("");
     }
 
     return 0;
