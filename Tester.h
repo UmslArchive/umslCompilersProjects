@@ -4,10 +4,11 @@
 //Date:     11/15/19
 //-----------------------------------------------------------------------------
 
-#ifndef TEST_SCANNER_H
-#define TEST_SCANNER_H
+#ifndef TESTER_H
+#define TESTER_H
 
 #include "Scanner.h"
+#include "Parser.h"
 
 class TestScanner {
 private:

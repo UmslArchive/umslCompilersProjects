@@ -3,7 +3,7 @@
 //Assign:   Project 2
 //Date:     11/15/19
 //-----------------------------------------------------------------------------
-#include "TestScanner.h"
+#include "Tester.h"
 
 //Constructor
 TestScanner::TestScanner()

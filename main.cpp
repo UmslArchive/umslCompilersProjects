@@ -6,7 +6,7 @@
 
 #include <fstream>
 
-#include "TestScanner.h"
+#include "Tester.h"
 
 //Change this to either run all tests or just the scanner test. [0, 1]
 #define PRIMARY_TEST_ONLY 1
@@ -17,6 +17,8 @@ bool readFromFile(const std::string path);
 
 std::string fileData;
 std::string fileName;
+
+//=============================================================================
 
 int main(int argc, char* argv[]) {
 
@@ -45,9 +47,7 @@ int main(int argc, char* argv[]) {
         success = true;
     }
 
-    //DEBUG
-    //std::cout << "FILEDATA:" << fileData << std::endl;
-
+    //-----
 
     //Testing
     TestScanner tester;
@@ -61,6 +61,8 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+
+//=============================================================================
 
 bool parseArgs(int argc, char* argv[]) {
     if(argc > 2){
