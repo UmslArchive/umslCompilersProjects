@@ -8,6 +8,7 @@
 #define PARSER_H
 
 #include "Scanner.h"
+#include "ParseTree.h"
 
 class Parser  {
 private:
@@ -35,7 +36,8 @@ private:
 
 
 public:
-    
+    //Runs the recursive decent parser to completion and returns the generated tree
+    ParseTree parser();
 };
 
 #endif
