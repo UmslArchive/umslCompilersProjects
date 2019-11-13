@@ -12,9 +12,10 @@
 
 class TestScanner {
 private:
-
-public:
     Scanner scanner;
+    
+public:
+    
     //Constructor
     TestScanner();
 
@@ -25,6 +26,10 @@ public:
     void runTokenTests();
     void testTokenKeywords();
     void testPrintToken();
+};
+
+class TestParser {
+    
 };
 
 #endif
