@@ -49,7 +49,8 @@ int main(int argc, char* argv[]) {
 
     //-----
 
-    //Testing
+    //Testing:
+
     TestScanner scannerTester;
     if(PRIMARY_TEST_ONLY == 1) {
         scannerTester.primaryScannerTest(fileData);
@@ -58,6 +59,10 @@ int main(int argc, char* argv[]) {
         scannerTester.runTokenTests();
         scannerTester.primaryScannerTest("");
     }
+
+    TestParser parserTester;
+    parserTester.parserNoTreeTest(fileData);
+
 
     return 0;
 }

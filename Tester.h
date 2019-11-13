@@ -13,7 +13,6 @@
 class TestScanner {
 private:
     Scanner scanner;
-    
 public:
     
     //Constructor
@@ -29,7 +28,11 @@ public:
 };
 
 class TestParser {
-    
+private:
+    Scanner scanner;
+
+public:
+    void parserNoTreeTest(std::string fileData);
 };
 
 #endif

@@ -12,10 +12,30 @@
 class Parser  {
 private:
     Scanner scanner;
+    Token currentToken;
+
+    //Nonterminal functions
+    void program();
+    void block();
+    void vars();
+    void expr();
+    void A();
+    void N();
+    void M();
+    void R();
+    void stats();
+    void mStat();
+    void stat();
+    void in();
+    void out();
+    void IF();
+    void loop();
+    void assign();
+    void RO();
+
 
 public:
     
-
 };
 
 #endif
