@@ -108,7 +108,7 @@ Token Scanner::getNextToken() {
         }
 
         if(currentState == ERROR_st) {
-            std::cerr << "ERROR on line#" << lineCount << std::endl;
+            std::cerr << "on line #" << lineCount << std::endl;
             return Token(ERROR_tk, "ERROR_TOKEN", lineCount);
         }
 

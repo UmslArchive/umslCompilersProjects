@@ -63,11 +63,10 @@ State Table::lookup(State state, char character) {
     {   
         //EOF character is not an error to report. Program just ends
         if(character != 0)
-            std::cerr << "ERROR:Illegal character input: '" << character << "'" << std::endl;
+            std::cerr << "ERROR: Invalid character \'" << character << "\' ";
 
         return ERROR_st;
     }
-        
 
     return (State)fsaTable [ state ] [ sigma[characterCategory] - 1 ];
 }
