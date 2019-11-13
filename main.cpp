@@ -1,7 +1,7 @@
 //Author:   Colby Ackerman
 //Class:    CS4280 Program Translations
-//Assign:   Project 1
-//Date:     10/20/19
+//Assign:   Project 2
+//Date:     11/15/19
 //-----------------------------------------------------------------------------
 
 #include <fstream>
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
 
         //Read entire file contents into fileString.
         if(!readFromFile(fileName)) {
-            std::cerr << "Error: Function: readFromFile(std::string)" << std::endl;
+            std::cerr << "Error: File could not be opened" << std::endl;
             return 0;
         }
         success = true;
