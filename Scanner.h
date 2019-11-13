@@ -7,10 +7,10 @@
 #ifndef SCANNER_H
 #define SCANNER_H
 
+#include <limits>
+
 #include "Table.h"
 #include "Token.h"
-
-#include <limits>
 
 class Scanner {
 private:
