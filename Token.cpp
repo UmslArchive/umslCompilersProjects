@@ -64,8 +64,6 @@ std::string Token::idName(int id) {
 
 //Debug
 void Token::printToken() {
-    if(id == ERROR_tk)
-        return;
 
     int columnSpacing = 35;
 
