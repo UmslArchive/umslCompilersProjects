@@ -3,7 +3,7 @@
 //Assign:   Project 2
 //Date:     11/15/19
 //-----------------------------------------------------------------------------
-#include "Tester.h"
+#include "TestScanner.h"
 
 //Constructor
 TestScanner::TestScanner()
@@ -75,15 +75,5 @@ void TestScanner::testPrintToken() {
     b.printToken();
     c.printToken();
     std::cout << std::endl;
-}
-
-
-//===============================PARSER TEST FUNCTIONS=========================
-
-
-void TestParser::parserNoTreeTest(std::string fileData) {
-    parser.sendFileDataToScanner(fileData);
-
-    std::cout << fileData << std::endl;
 }
 

@@ -6,7 +6,8 @@
 
 #include <fstream>
 
-#include "Tester.h"
+#include "TestScanner.h"
+#include "TestParser.h"
 
 //Change this to either run all tests or just the scanner test. [0, 1]
 #define PRIMARY_TEST_ONLY 1

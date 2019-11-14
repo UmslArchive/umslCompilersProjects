@@ -4,11 +4,10 @@
 //Date:     11/15/19
 //-----------------------------------------------------------------------------
 
-#ifndef TESTER_H
-#define TESTER_H
+#ifndef TEST_SCANNER_H
+#define TEST_SCANNER_H
 
 #include "Scanner.h"
-#include "Parser.h"
 
 class TestScanner {
 private:
@@ -25,14 +24,6 @@ public:
     void runTokenTests();
     void testTokenKeywords();
     void testPrintToken();
-};
-
-class TestParser {
-private:
-    Parser parser;
-
-public:
-    void parserNoTreeTest(std::string fileData);
 };
 
 #endif
