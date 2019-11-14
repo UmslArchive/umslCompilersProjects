@@ -10,5 +10,5 @@ void TestParser::parserNoTreeTest(std::string fileData) {
     
     parser.sendFileDataToScanner(fileData);
 
-    std::cout << fileData << std::endl;
+    parser.parse();
 }

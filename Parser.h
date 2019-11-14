@@ -14,9 +14,11 @@ class Parser  {
 private:
     Scanner scanner;
     Token currentToken;
+    ParseTree parseTree;
 
-    //Nonterminal functions
-    void program();
+    //Nonterminal functions: 
+
+    ParseTree program();
     void block();
     void vars();
     void expr();

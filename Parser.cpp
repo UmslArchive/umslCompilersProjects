@@ -17,11 +17,24 @@ void Parser::sendFileDataToScanner(std::string fileData) {
 }
 
 ParseTree Parser::parse() {
-    return ParseTree();
+    ParseTree root;
+    root = program();
+
+    return root;
 }
 
-void Parser::program() {
+ParseTree Parser::program() {
+    currentToken = scanner.getNextToken();
+    currentToken.printToken();
+    vars();
+    block();
 
+    if(currentToken.getID() == EOF_tk) {
+        currentToken.printToken();
+        return ParseTree();
+    }
+
+    return ParseTree();
 }
 
 void Parser::block() {
@@ -29,7 +42,7 @@ void Parser::block() {
 }
 
 void Parser::vars() {
-
+    
 }
 
 void Parser::expr() {
