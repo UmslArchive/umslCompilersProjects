@@ -29,11 +29,11 @@ ParseTree Parser::program() {
     block();
 
     if(currentToken.getID() == EOF_tk) {
+        std::cout << "FINISHED" << std::endl;
         currentToken.printToken();
         return ParseTree();
     }
     else {
-        currentToken.printToken();
         error();
     }
 
@@ -46,6 +46,7 @@ void Parser::block() {
         vars();
         stats();
         if(currentToken.getID() == KWD_STOP_tk) {
+            currentToken = scanner.getNextToken();
             return;
         }
         else {
@@ -91,7 +92,11 @@ void Parser::expr() {
     Z();
 }
 void Parser::Z() {
-
+    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("+") == 0) {
+        currentToken = scanner.getNextToken();
+        expr();
+        return;
+    }
 }
 
 void Parser::A() {
@@ -123,18 +128,44 @@ void Parser::X() {
         N();
         return;
     }
-    else {
-        error();
-    }
-
 }
 
 void Parser::M() {
-    
+    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("-") == 0) {
+        currentToken = scanner.getNextToken();
+        M();
+        return;
+    }
+    else {
+        R();
+        return;
+    }
 }
 
 void Parser::R() {
-
+    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("[") == 0) {
+        currentToken = scanner.getNextToken();
+        expr();
+        if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("]") == 0) {
+            currentToken = scanner.getNextToken();
+            return;
+        }
+        else {
+            error();
+        }
+            
+    }
+    else if(currentToken.getID() == IDENTIFIER_tk) {
+        currentToken = scanner.getNextToken();
+        return;
+    }
+    else if(currentToken.getID() == INTEGER_tk) {
+        currentToken = scanner.getNextToken();
+        return;
+    }
+    else {
+        error();
+    }
 }
 
 void Parser::stats() {
@@ -225,4 +256,5 @@ void Parser::T() {
 void Parser::error() {
     std::cerr << "PARSE ERROR" << std::endl;
     currentToken.printToken();
+    exit(1);
 }
