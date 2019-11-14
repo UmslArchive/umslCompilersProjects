@@ -5,7 +5,7 @@
 ##################################################
 
 CC = g++
-CFLAGS =
+CFLAGS = -g
 TARGET = frontEnd
 OBJS = main.o Scanner.o Table.o TestScanner.o TestParser.o Token.o TestTree.o ParseTree.o Parser.o
 .SUFFIXES: .cpp .o
