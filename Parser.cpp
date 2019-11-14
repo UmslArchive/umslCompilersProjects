@@ -5,3 +5,11 @@
 //-----------------------------------------------------------------------------
 
 #include "Parser.h"
+
+Parser::Parser() :
+    currentToken(Token(ERROR_tk, "PARSE_BEGIN", 0))
+{}
+
+void Parser::sendFileDataToScanner(std::string fileData) {
+    scanner.loadFileData(fileData);
+}

@@ -25,13 +25,13 @@ int main(int argc, char* argv[]) {
     //Handle file and command line arguments
     bool success = false;
 
-    //Handle either simulate keyboard input or file redirection.
+    //Handle either simulate keyboard input or file redirection
     if(argc == 1) {
         handleFileRedirOrKeyboardSim();
         success = true;
     }
 
-    //Otherwise need to load a file.
+    //Otherwise need to load a file
     else {
         //Get the file name.
         if(!parseArgs(argc, argv)) {
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
             return 0;
         }
 
-        //Read entire file contents into fileString.
+        //Read entire file contents into fileString
         if(!readFromFile(fileName)) {
             std::cerr << "Error: File could not be opened" << std::endl;
             return 0;
@@ -51,18 +51,17 @@ int main(int argc, char* argv[]) {
 
     //Testing:
 
-    TestScanner scannerTester;
+    /* TestScanner scannerTester;
     if(PRIMARY_TEST_ONLY == 1) {
         scannerTester.primaryScannerTest(fileData);
     }
     else {
-        scannerTester.runTokenTests();
+        scannerTester.runTokenTests(); 
         scannerTester.primaryScannerTest("");
-    }
+    } */
 
     TestParser parserTester;
     parserTester.parserNoTreeTest(fileData);
-
 
     return 0;
 }
@@ -77,10 +76,10 @@ bool parseArgs(int argc, char* argv[]) {
 
     /* 
     This is the case in which the user has passed the name of a file without
-    the file extension appended to the end of it. 
+    the file extension appended to the end of it
     */
     else if(argc == 2) {
-        //Retrieve the file name from the argument list.
+        //Retrieve the file name from the argument list
         fileName = std::string(argv[1]);
     
         //Find the last occurence of '.' 

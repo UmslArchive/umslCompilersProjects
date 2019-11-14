@@ -18,6 +18,7 @@ Scanner::Scanner() :
 
 Token Scanner::getNextToken() {
 
+    //Used to fetch the 
     Token dummyToken(ERROR_tk, "DUMMY", -1);
 
     //Token attributes

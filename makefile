@@ -7,7 +7,7 @@
 CC = g++
 CFLAGS =
 TARGET = frontEnd
-OBJS = main.o Scanner.o Table.o Tester.o Token.o TestTree.o ParseTree.o
+OBJS = main.o Scanner.o Table.o Tester.o Token.o TestTree.o ParseTree.o Parser.o
 .SUFFIXES: .cpp .o
 
 $(TARGET): $(OBJS)

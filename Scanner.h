@@ -27,7 +27,6 @@ private:
     std::stringstream fileDataParser;
 
     char readNextCharacter();
-
     
 public:
     Scanner();

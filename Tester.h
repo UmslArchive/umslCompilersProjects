@@ -29,7 +29,7 @@ public:
 
 class TestParser {
 private:
-    Scanner scanner;
+    Parser parser;
 
 public:
     void parserNoTreeTest(std::string fileData);

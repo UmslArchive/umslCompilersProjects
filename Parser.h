@@ -36,8 +36,15 @@ private:
 
 
 public:
+    //Constuctor
+    Parser();
+
+    //Init
+    void sendFileDataToScanner(std::string fileData);
+
     //Runs the recursive decent parser to completion and returns the generated tree
-    ParseTree parser();
+    ParseTree parse();
+
 };
 
 #endif

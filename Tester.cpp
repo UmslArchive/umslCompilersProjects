@@ -78,6 +78,12 @@ void TestScanner::testPrintToken() {
 }
 
 
-void TestParser::parserNoTreeTest(std::string fileData) {
+//===============================PARSER TEST FUNCTIONS=========================
 
+
+void TestParser::parserNoTreeTest(std::string fileData) {
+    parser.sendFileDataToScanner(fileData);
+
+    std::cout << fileData << std::endl;
 }
+
