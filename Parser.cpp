@@ -25,7 +25,6 @@ ParseTree Parser::parse() {
 
 ParseTree Parser::program() {
     currentToken = scanner.getNextToken();
-    currentToken.printToken();
     vars();
     block();
 
@@ -33,32 +32,105 @@ ParseTree Parser::program() {
         currentToken.printToken();
         return ParseTree();
     }
+    else {
+        currentToken.printToken();
+        error();
+    }
 
     return ParseTree();
 }
 
 void Parser::block() {
-
+    if(currentToken.getID() == KWD_START_tk){
+        currentToken = scanner.getNextToken();
+        vars();
+        stats();
+        if(currentToken.getID() == KWD_STOP_tk) {
+            return;
+        }
+        else {
+            error();
+        }
+    }
+    else {
+        error();
+    }
 }
 
 void Parser::vars() {
-    
+    if(currentToken.getID() == KWD_VAR_tk) {
+        currentToken = scanner.getNextToken();
+        if(currentToken.getID() == IDENTIFIER_tk) {
+            currentToken = scanner.getNextToken();
+            if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(":") == 0) {
+                currentToken = scanner.getNextToken();
+                if(currentToken.getID() == INTEGER_tk) {
+                    currentToken = scanner.getNextToken();
+                    vars();
+                    return;
+                }
+                else {
+                    error();
+                }
+            }
+            else {
+                error();
+            }
+        }
+        else {
+            error();
+        }
+    }
+    else {
+        return;
+    }
 }
 
 void Parser::expr() {
+    A();
+    Z();
+}
+void Parser::Z() {
 
 }
 
 void Parser::A() {
+    N();
+    Y();
+}
 
+void Parser::Y() {
+    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("-") == 0) {
+        currentToken = scanner.getNextToken();
+        A();
+    }
+    return;
 }
 
 void Parser::N() {
+    M();
+    X();
+}
+
+void Parser::X() {
+    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("/") == 0) {
+        currentToken = scanner.getNextToken();
+        N();
+        return;
+    }
+    else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("*") == 0) {
+        currentToken = scanner.getNextToken();
+        N();
+        return;
+    }
+    else {
+        error();
+    }
 
 }
 
 void Parser::M() {
-
+    
 }
 
 void Parser::R() {
@@ -66,7 +138,15 @@ void Parser::R() {
 }
 
 void Parser::stats() {
-
+    stat();
+    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(";") == 0) {
+        currentToken = scanner.getNextToken();
+        mStat();
+        return;
+    }
+    else {
+        error();
+    }
 }
 
 void Parser::mStat() {
@@ -74,7 +154,39 @@ void Parser::mStat() {
 }
 
 void Parser::stat() {
-
+    if(currentToken.getID() == KWD_IN_tk) {
+        currentToken = scanner.getNextToken();
+        in();
+        return;
+    }
+    else if(currentToken.getID() == KWD_OUT_tk) {
+        currentToken = scanner.getNextToken();
+        out();
+        return;
+    }
+    else if(currentToken.getID() == KWD_START_tk) {
+        currentToken = scanner.getNextToken();
+        block();
+        return;
+    }
+    else if(currentToken.getID() == KWD_COND_tk) {
+        currentToken = scanner.getNextToken();
+        IF();
+        return;
+    }
+    else if(currentToken.getID() == KWD_ITERATE_tk) {
+        currentToken = scanner.getNextToken();
+        loop();
+        return;
+    }
+    else if(currentToken.getID() == IDENTIFIER_tk) {
+        currentToken = scanner.getNextToken();
+        assign();
+        return;
+    }
+    else {
+        error();
+    }
 }
 
 void Parser::in() {
@@ -82,7 +194,8 @@ void Parser::in() {
 }
 
 void Parser::out() {
-
+    expr();
+    return;
 }
 
 void Parser::IF() {
@@ -99,4 +212,17 @@ void Parser::assign() {
 
 void Parser::RO() {
 
+}
+
+void Parser::W() {
+
+}
+
+void Parser::T() {
+
+}
+
+void Parser::error() {
+    std::cerr << "PARSE ERROR" << std::endl;
+    currentToken.printToken();
 }

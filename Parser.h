@@ -22,8 +22,11 @@ private:
     void block();
     void vars();
     void expr();
+    void Z();
     void A();
+    void Y();
     void N();
+    void X();
     void M();
     void R();
     void stats();
@@ -35,7 +38,10 @@ private:
     void loop();
     void assign();
     void RO();
+    void W();
+    void T();
 
+    void error();
 
 public:
     //Constuctor
