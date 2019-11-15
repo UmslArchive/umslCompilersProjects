@@ -9,7 +9,8 @@
 node::node(std::string label) :
     label(label), 
     children(std::vector<node*>()),
-    data(std::vector<std::string>())
+    data(std::vector<std::string>()),
+    indent(0)
 {
     //std::cout << label << children.size() << data.size() << std::endl;
 }

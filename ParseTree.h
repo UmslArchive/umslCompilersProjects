@@ -16,6 +16,8 @@ struct node {
     std::vector<node*> children;
     std::vector<std::string> data;
 
+    int indent;
+
     //Constructor
     node(std::string label);
 };
