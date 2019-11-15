@@ -32,7 +32,6 @@ ParseTree Parser::program() {
 
     if(currentToken.getID() == EOF_tk) {
         std::cout << "FINISHED" << std::endl;
-        currentToken.printToken();
         return ParseTree();
     }
     else {
@@ -232,7 +231,7 @@ void Parser::stats() {
 void Parser::mStat() {
     std::cout << "entered MSTAT" << std::endl;
     stat();
-    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(";")) {
+    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(";") == 0) {
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         mStat();
