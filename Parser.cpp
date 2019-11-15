@@ -27,7 +27,7 @@ ParseTree Parser::parse() {
 }
 
 node* Parser::program() {
-    std::cout << "entered PROGRAM" << std::endl;
+    if(debug) std::cout << "entered PROGRAM" << std::endl;
 
     node* programNode = new node("program");
     currentToken = scanner.getNextToken();
