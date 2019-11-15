@@ -21,6 +21,11 @@ are kindof a cluster**** anyway. I really don't enjoy using recursion and always
 stack implementation/iterative approach. I guess either way there is a stack involved, but I just prefer not to have
 to backtrace on gdb or whatever if I don't have to. Basically, I find it considerably easier to debug iterative programs.
 
+It's probably worth noting that I did end up left factorizing the BNF in its entirety before I started on this project.
+
+Here's a link to the google doc: 
+https://docs.google.com/document/d/1VR8K5s5yKMt6-dgH4tkx1-mQVadBxtyZnviaROQOvpQ/edit?usp=sharing
+
 Anyway... the parser seems to work properly and generate a valid parse tree, so that's good.
 
 
@@ -28,3 +33,4 @@ Here's the remote repo:
 https://github.com/CSnackerman/umslCompilersProjects
 
 Project 2 is contained in the branch "p2".
+The master branch is P1.
