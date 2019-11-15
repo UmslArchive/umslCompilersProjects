@@ -19,15 +19,17 @@ void Parser::sendFileDataToScanner(std::string fileData) {
 ParseTree Parser::parse() {
     parseTree.root = program();
 
-    std::cout << std::endl << "PARSE TREE:" << std::endl;
+    /* std::cout << std::endl << "PARSE TREE:" << std::endl;
 
-    parseTree.printAll(parseTree.root);
+    parseTree.printAll(parseTree.root); */
 
     return parseTree;
 }
 
 node* Parser::program() {
     if(debug) std::cout << "entered PROGRAM" << std::endl;
+
+    std::cout << std::endl << "PARSING..." << std::endl << std::endl;
 
     node* programNode = new node("program");
     currentToken = scanner.getNextToken();

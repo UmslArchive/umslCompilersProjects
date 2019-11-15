@@ -8,6 +8,7 @@
 
 #include "TestScanner.h"
 #include "TestParser.h"
+#include "TestTree.h"
 
 //Change this to either run all tests or just the scanner test. [0, 1]
 #define PRIMARY_TEST_ONLY 1
@@ -52,17 +53,17 @@ int main(int argc, char* argv[]) {
 
     //Testing:
 
-    /* TestScanner scannerTester;
-    if(PRIMARY_TEST_ONLY == 1) {
-        scannerTester.primaryScannerTest(fileData);
-    }
-    else {
-        scannerTester.runTokenTests(); 
-        scannerTester.primaryScannerTest("");
-    } */
+    /* TestParser parserTester;
+    parserTester.parserNoTreeTest(fileData); */
 
-    TestParser parserTester;
-    parserTester.parserNoTreeTest(fileData);
+    Parser parser;
+    parser.sendFileDataToScanner(fileData);
+
+    ParseTree parseTree = parser.parse();
+
+    
+    testPrintParseTree(parseTree);
+    
 
     return 0;
 }
