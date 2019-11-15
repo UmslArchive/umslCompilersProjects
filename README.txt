@@ -14,7 +14,14 @@ is stored in a separate vector from the children pointers which both are contain
 It results in slightly odd behavior. E.g. The "if" node stores all of the discardable tokens { (, (, ), ) },
 so when I do a left-to-right print of the parse tree, the user ends up seeing all of those tokens printed before what
 is contained between them. I believe this is inconsequential though, as all of the meaningful tokens are printed in order.
-It might just make p3 slightly weirder to implement is all. I'll figure it out though. 
+It might just make p3 slightly weirder to implement is all. I'll figure it out though.
+
+Also the commenting is not the greatest on this project--especially within each nonterminal function, but those
+are kindof a cluster**** anyway. I really don't enjoy using recursion and always prefer a 
+stack implementation/iterative approach. I guess either way there is a stack involved, but I just prefer not to have
+to backtrace on gdb or whatever if I don't have to. Basically, I find it considerably easier to debug iterative programs.
+
+Anyway... the parser seems to work properly and generate a valid parse tree, so that's good.
 
 
 Here's the remote repo:
