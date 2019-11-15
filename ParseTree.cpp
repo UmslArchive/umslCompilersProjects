@@ -11,5 +11,26 @@ node::node(std::string label) :
     children(std::vector<node*>()),
     data(std::vector<std::string>())
 {
-    std::cout << label << children.size() << data.size() << std::endl;
+    //std::cout << label << children.size() << data.size() << std::endl;
+}
+
+void ParseTree::printNode(node* node) {
+    std::cout << node->label;
+    if(node->data.size() > 0)
+        std::cout << " data: ";
+
+    for(int i = 0; i < node->data.size(); ++i) {
+        std::cout << node->data[i];
+    }
+
+    std::cout << std::endl;       
+}
+
+void ParseTree::printAll(node* root) {
+    printNode(root);
+    for(int i = 0; i < root->children.size(); ++i) {
+        if(root->children[i] != NULL) {
+            printAll(root->children[i]);
+        }
+    }
 }

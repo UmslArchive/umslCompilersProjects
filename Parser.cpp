@@ -18,6 +18,11 @@ void Parser::sendFileDataToScanner(std::string fileData) {
 
 ParseTree Parser::parse() {
     parseTree.root = program();
+
+    std::cout << std::endl;
+
+    parseTree.printAll(parseTree.root);
+
     return parseTree;
 }
 

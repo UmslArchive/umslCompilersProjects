@@ -23,6 +23,9 @@ struct node {
 class ParseTree {
 public:
     node* root;
+
+    void printAll(node* root);
+    void printNode(node* node);
 };
 
 #endif
