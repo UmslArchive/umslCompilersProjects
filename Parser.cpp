@@ -534,7 +534,10 @@ node* Parser::T() {
 }
 
 void Parser::error() {
-    std::cerr << "PARSE ERROR" << std::endl;
+    std::cerr << "\nPARSE ERROR --- INVALID PROGRAM" << std::endl << std::endl;
+    std::cout << "Invalid token found:" << std::endl;
     currentToken.printToken();
+
+    std::cout << std::endl;
     exit(1);
 }
