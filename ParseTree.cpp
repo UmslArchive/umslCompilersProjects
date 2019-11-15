@@ -19,7 +19,12 @@ ParseTree::ParseTree() :
 {}
 
 void ParseTree::printNode(node* node) {
+    for(int i = 0; i < indent; ++i) {
+        std::cout << " ";
+    }
+
     std::cout << node->label;
+
     if(node->data.size() > 0)
         std::cout << "\tdata: ";
 
@@ -27,15 +32,18 @@ void ParseTree::printNode(node* node) {
         std::cout << node->data[i] << ", ";
     }
 
-    std::cout << std::endl;       
+    std::cout << std::endl;
 }
 
 void ParseTree::printAll(node* root) {
     printNode(root);
+
     for(int i = 0; i < root->children.size(); ++i) {
+        indent++;
         if(root->children[i] != NULL) {
-            
             printAll(root->children[i]);
         }
+        indent--;
+
     }
 }
