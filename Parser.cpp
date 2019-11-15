@@ -19,7 +19,7 @@ void Parser::sendFileDataToScanner(std::string fileData) {
 ParseTree Parser::parse() {
     parseTree.root = program();
 
-    std::cout << std::endl;
+    std::cout << std::endl << "PARSE TREE:" << std::endl;
 
     parseTree.printAll(parseTree.root);
 
@@ -36,7 +36,7 @@ node* Parser::program() {
     programNode->children.push_back(block());
 
     if(currentToken.getID() == EOF_tk) {
-        std::cout << "FINISHED" << std::endl;
+        std::cout << "\nFINISHED -- VALID PROGRAM" << std::endl;
         return programNode;
     }
     else {
@@ -77,12 +77,14 @@ node* Parser::vars() {
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         if(currentToken.getID() == IDENTIFIER_tk) {
+            varsNode->data.push_back(currentToken.getInstance());
             currentToken = scanner.getNextToken();
             currentToken.printToken();
             if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(":") == 0) {
                 currentToken = scanner.getNextToken();
                 currentToken.printToken();
                 if(currentToken.getID() == INTEGER_tk) {
+                    varsNode->data.push_back(currentToken.getInstance());
                     currentToken = scanner.getNextToken();
                     currentToken.printToken();
                     varsNode->children.push_back(vars());

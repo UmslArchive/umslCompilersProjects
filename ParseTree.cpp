@@ -20,7 +20,7 @@ void ParseTree::printNode(node* node) {
         std::cout << " data: ";
 
     for(int i = 0; i < node->data.size(); ++i) {
-        std::cout << node->data[i];
+        std::cout << node->data[i] << ", ";
     }
 
     std::cout << std::endl;       
