@@ -47,7 +47,7 @@ node* Parser::program() {
 }
 
 node* Parser::block() {
-    std::cout << "entered BLOCK" << std::endl;
+    if(debug) std::cout << "entered BLOCK" << std::endl;
     node* blockNode = new node("block");
     if(currentToken.getID() == KWD_START_tk){
         currentToken = scanner.getNextToken();
@@ -57,21 +57,20 @@ node* Parser::block() {
         if(currentToken.getID() == KWD_STOP_tk) {
             currentToken = scanner.getNextToken();
             currentToken.printToken();
-            std::cout << "exit BLOCK" << std::endl;
+            if(debug) std::cout << "exit BLOCK" << std::endl;
             return blockNode;
         }
         else {
-            std::cout << "BLOCK error" << std::endl;
             error();
         }
     }
     
-    std::cout << "exit BLOCK" << std::endl;
+    if(debug) std::cout << "exit BLOCK" << std::endl;
     return NULL;
 }
 
 node* Parser::vars() {
-    std::cout << "entered VARS" << std::endl;
+    if(debug) std::cout << "entered VARS" << std::endl;
     node* varsNode = new node("vars");
     if(currentToken.getID() == KWD_VAR_tk) {
         currentToken = scanner.getNextToken();
@@ -88,7 +87,7 @@ node* Parser::vars() {
                     currentToken = scanner.getNextToken();
                     currentToken.printToken();
                     varsNode->children.push_back(vars());
-                    std::cout << "exit VARS 1" << std::endl;
+                    if(debug) std::cout << "exit VARS 1" << std::endl;
                     return varsNode;
                 }
                 else {
@@ -104,45 +103,45 @@ node* Parser::vars() {
         }
     }
 
-    std::cout << "exit VARS 2" << std::endl;
+    if(debug) std::cout << "exit VARS 2" << std::endl;
     return NULL;
 }
 
 node* Parser::expr() {
-    std::cout << "entered EXPR" << std::endl;
+    if(debug) std::cout << "entered EXPR" << std::endl;
     node* exprNode = new node("expr"); 
     exprNode->children.push_back(A());
     exprNode->children.push_back(Z());
-    std::cout << "exit EXPR" << std::endl;
+    if(debug) std::cout << "exit EXPR" << std::endl;
 
     return exprNode;
 }
 node* Parser::Z() {
-    std::cout << "entered Z" << std::endl;
+    if(debug) std::cout << "entered Z" << std::endl;
     node* zNode = new node("z");
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("+") == 0) {
         zNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         zNode->children.push_back(expr());
-        std::cout << "exit Z" << std::endl;
+        if(debug) std::cout << "exit Z" << std::endl;
         return zNode;
     }
     return NULL;
 }
 
 node* Parser::A() {
-    std::cout << "entered A" << std::endl;
+    if(debug) std::cout << "entered A" << std::endl;
     node* aNode = new node("a");
     aNode->children.push_back(N());
     aNode->children.push_back(Y());
-    std::cout << "exit A" << std::endl;
+    if(debug) std::cout << "exit A" << std::endl;
 
     return aNode;
 }
 
 node* Parser::Y() {
-    std::cout << "entered Y" << std::endl;
+    if(debug) std::cout << "entered Y" << std::endl;
     node* yNode = new node("y");
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("-") == 0) {
         yNode->data.push_back(currentToken.getInstance());
@@ -150,29 +149,29 @@ node* Parser::Y() {
         currentToken.printToken();
         yNode->children.push_back(A());
     }
-    std::cout << "exit Y" << std::endl;
+    if(debug) std::cout << "exit Y" << std::endl;
     return yNode;
 }
 
 node* Parser::N() {
-    std::cout << "entered N" << std::endl;
+    if(debug) std::cout << "entered N" << std::endl;
     node* nNode = new node("n");
     nNode->children.push_back(M());
     nNode->children.push_back(X());
-    std::cout << "exit N" << std::endl;
+    if(debug) std::cout << "exit N" << std::endl;
 
     return nNode;
 }
 
 node* Parser::X() {
-    std::cout << "entered X" << std::endl;
+    if(debug) std::cout << "entered X" << std::endl;
     node* xNode = new node("x");
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("/") == 0) {
         xNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         xNode->children.push_back(N());
-        std::cout << "exit X" << std::endl;
+        if(debug) std::cout << "exit X" << std::endl;
         return xNode;
     }
     else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("*") == 0) {
@@ -180,7 +179,7 @@ node* Parser::X() {
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         xNode->children.push_back(N());
-        std::cout << "exit X" << std::endl;
+        if(debug) std::cout << "exit X" << std::endl;
         return xNode;
     }
 
@@ -188,25 +187,25 @@ node* Parser::X() {
 }
 
 node* Parser::M() {
-    std::cout << "entered M" << std::endl;
+    if(debug) std::cout << "entered M" << std::endl;
     node* mNode = new node("m");
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("-") == 0) {
         mNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         mNode->children.push_back(M());
-        std::cout << "exit M" << std::endl;
+        if(debug) std::cout << "exit M" << std::endl;
         return mNode;
     }
     else {
         mNode->children.push_back(R());
-        std::cout << "exit M" << std::endl;
+        if(debug) std::cout << "exit M" << std::endl;
         return mNode;
     }
 }
 
 node* Parser::R() {
-    std::cout << "entered R" << std::endl;
+    if(debug) std::cout << "entered R" << std::endl;
     node* rNode = new node("r");
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("[") == 0) {
         rNode->data.push_back(currentToken.getInstance());
@@ -217,7 +216,7 @@ node* Parser::R() {
             rNode->data.push_back(currentToken.getInstance());
             currentToken = scanner.getNextToken();
             currentToken.printToken();
-            std::cout << "exit R" << std::endl;
+            if(debug) std::cout << "exit R" << std::endl;
             return rNode;
         }
         else {
@@ -229,18 +228,17 @@ node* Parser::R() {
         rNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
-        std::cout << "exit R" << std::endl;
+        if(debug) std::cout << "exit R" << std::endl;
         return rNode;
     }
     else if(currentToken.getID() == INTEGER_tk) {
         rNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
-        std::cout << "exit R" << std::endl;
+        if(debug) std::cout << "exit R" << std::endl;
         return rNode;
     }
     else {
-        std::cout << "R error" << std::endl;
         error();
     }
 
@@ -248,7 +246,7 @@ node* Parser::R() {
 }
 
 node* Parser::stats() {
-    std::cout << "entered STATS" << std::endl;
+    if(debug) std::cout << "entered STATS" << std::endl;
     node* statsNode = new node("stats");
     statsNode->children.push_back(stat());
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(";") == 0) {
@@ -256,7 +254,7 @@ node* Parser::stats() {
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         statsNode->children.push_back(mStat());
-        std::cout << "exit STATS" << std::endl;
+        if(debug) std::cout << "exit STATS" << std::endl;
         return statsNode;
     }
     else {
@@ -267,7 +265,7 @@ node* Parser::stats() {
 }
 
 node* Parser::mStat() {
-    std::cout << "entered MSTAT" << std::endl;
+    if(debug) std::cout << "entered MSTAT" << std::endl;
     node* mStatNode = new node("mstat");
     mStatNode->children.push_back(stat());
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(";") == 0) {
@@ -275,16 +273,16 @@ node* Parser::mStat() {
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         mStatNode->children.push_back(mStat());
-        std::cout << "exit MSTAT 1" << std::endl;
+        if(debug) std::cout << "exit MSTAT 1" << std::endl;
         return mStatNode;
     }
 
-    std::cout << "exit MSTAT 2" << std::endl;
+    if(debug) std::cout << "exit MSTAT 2" << std::endl;
     return NULL;
 }
 
 node* Parser::stat() {
-    std::cout << "entered STAT" << std::endl;
+    if(debug) std::cout << "entered STAT" << std::endl;
     node* statNode = new node("stat");
     statNode->children.push_back(in());
     statNode->children.push_back(out());
@@ -293,12 +291,12 @@ node* Parser::stat() {
     statNode->children.push_back(loop());
     statNode->children.push_back(assign());
 
-    std::cout << "exit STAT" << std::endl;
+    if(debug) std::cout << "exit STAT" << std::endl;
     return statNode;
 }
 
 node* Parser::in() {
-    std::cout << "entered IN" << std::endl;
+    if(debug) std::cout << "entered IN" << std::endl;
     node* inNode = new node("in");
     if(currentToken.getID() == KWD_IN_tk) {
         inNode->data.push_back(currentToken.getInstance());
@@ -308,7 +306,7 @@ node* Parser::in() {
             inNode->data.push_back(currentToken.getInstance());
             currentToken = scanner.getNextToken();
             currentToken.printToken();
-            std::cout << "exit IN" << std::endl;
+            if(debug) std::cout << "exit IN" << std::endl;
             return inNode;
         }
         else {
@@ -319,14 +317,14 @@ node* Parser::in() {
 }
 
 node* Parser::out() {
-    std::cout << "entered OUT" << std::endl;
+    if(debug) std::cout << "entered OUT" << std::endl;
     node* outNode = new node("out");
     if(currentToken.getID() == KWD_OUT_tk) {
         outNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         outNode->children.push_back(expr());
-        std::cout << "exit OUT" << std::endl;
+        if(debug) std::cout << "exit OUT" << std::endl;
         return outNode;
     }
 
@@ -334,7 +332,7 @@ node* Parser::out() {
 }
 
 node* Parser::IF() {
-    std::cout << "entered IF" << std::endl;
+    if(debug) std::cout << "entered IF" << std::endl;
     node* ifNode = new node("if");
     if(currentToken.getID() == KWD_COND_tk) {
         ifNode->data.push_back(currentToken.getInstance());
@@ -360,7 +358,7 @@ node* Parser::IF() {
                         currentToken = scanner.getNextToken();
                         currentToken.printToken();
                         ifNode->children.push_back(stat());
-                        std::cout << "exit IF" << std::endl;
+                        if(debug) std::cout << "exit IF" << std::endl;
                         return ifNode;
                     }
                     else {
@@ -380,12 +378,12 @@ node* Parser::IF() {
         }
     }
 
-    std::cout << "exit IF" << std::endl;
+    if(debug) std::cout << "exit IF" << std::endl;
     return NULL;
 }
 
 node* Parser::loop() {
-    std::cout << "entered LOOP" << std::endl;
+    if(debug) std::cout << "entered LOOP" << std::endl;
     node* loopNode = new node("loop");
     if(currentToken.getID() == KWD_ITERATE_tk) {
         loopNode->data.push_back(currentToken.getInstance());
@@ -411,7 +409,7 @@ node* Parser::loop() {
                         currentToken = scanner.getNextToken();
                         currentToken.printToken();
                         loopNode->children.push_back(stat());
-                        std::cout << "exit LOOP" << std::endl;
+                        if(debug) std::cout << "exit LOOP" << std::endl;
                         return loopNode;
                     }
                     else {
@@ -430,12 +428,12 @@ node* Parser::loop() {
             error();
         }
     }
-    std::cout << "exit LOOP" << std::endl;
+    if(debug) std::cout << "exit LOOP" << std::endl;
     return NULL;
 }
 
 node* Parser::assign() {
-    std::cout << "entered ASSIGN" << std::endl;
+    if(debug) std::cout << "entered ASSIGN" << std::endl;
     node* assignNode = new node("assign");
     if(currentToken.getID() == IDENTIFIER_tk) {
         assignNode->data.push_back(currentToken.getInstance());
@@ -450,7 +448,7 @@ node* Parser::assign() {
                 currentToken = scanner.getNextToken();
                 currentToken.printToken();
                 assignNode->children.push_back(expr());
-                std::cout << "exit ASSIGN 1" << std::endl;
+                if(debug) std::cout << "exit ASSIGN 1" << std::endl;
                 return assignNode;
             }
             else {
@@ -461,19 +459,19 @@ node* Parser::assign() {
             error();
         }
     }
-    std::cout << "exit ASSIGN 2" << std::endl;
+    if(debug) std::cout << "exit ASSIGN 2" << std::endl;
     return NULL;
 }
 
 node* Parser::RO() {
-    std::cout << "entered RO" << std::endl;
+    if(debug) std::cout << "entered RO" << std::endl;
     node* roNode = new node("ro");
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("<") == 0) {
         roNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         roNode->children.push_back(W());
-        std::cout << "exit RO" << std::endl;
+        if(debug) std::cout << "exit RO" << std::endl;
         return roNode;
     }
     else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(">") == 0) {
@@ -481,14 +479,14 @@ node* Parser::RO() {
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         roNode->children.push_back(T());
-        std::cout << "exit RO" << std::endl;
+        if(debug) std::cout << "exit RO" << std::endl;
         return roNode;
     }
     else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("=") == 0) {
         roNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
-        std::cout << "exit RO" << std::endl;
+        if(debug) std::cout << "exit RO" << std::endl;
         return roNode;
     }
     else {
@@ -499,39 +497,39 @@ node* Parser::RO() {
 }
 
 node* Parser::W() {
-    std::cout << "entered W" << std::endl;
+    if(debug) std::cout << "entered W" << std::endl;
     node* wNode = new node("w");
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("<") == 0) {
         wNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
-        std::cout << "exit W" << std::endl;
+        if(debug) std::cout << "exit W" << std::endl;
         return wNode;
     }
     else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(">") == 0) {
         wNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
-        std::cout << "exit W" << std::endl;
+        if(debug) std::cout << "exit W" << std::endl;
         return wNode;
     }
 
-    std::cout << "exit W" << std::endl;
+    if(debug) std::cout << "exit W" << std::endl;
     return NULL;
 }
 
 node* Parser::T() {
-    std::cout << "entered T" << std::endl;
+    if(debug) std::cout << "entered T" << std::endl;
     node* tNode = new node("t");
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(">") == 0) {
         tNode->data.push_back(currentToken.getInstance());
         currentToken = scanner.getNextToken();
         currentToken.printToken();
-        std::cout << "exit T" << std::endl;
+        if(debug) std::cout << "exit T" << std::endl;
         return tNode;
     }
 
-    std::cout << "exit T" << std::endl;
+    if(debug) std::cout << "exit T" << std::endl;
     return NULL;
 }
 
