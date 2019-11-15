@@ -26,6 +26,7 @@ ParseTree Parser::parse() {
 ParseTree Parser::program() {
     std::cout << "entered PROGRAM" << std::endl;
     currentToken = scanner.getNextToken();
+    currentToken.printToken();
     vars();
     block();
 
@@ -45,16 +46,23 @@ void Parser::block() {
     std::cout << "entered BLOCK" << std::endl;
     if(currentToken.getID() == KWD_START_tk){
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         vars();
         stats();
         if(currentToken.getID() == KWD_STOP_tk) {
             currentToken = scanner.getNextToken();
+            currentToken.printToken();
             std::cout << "exit BLOCK" << std::endl;
             return;
         }
         else {
+            std::cout << "BLOCK error" << std::endl;
             error();
         }
+    }
+    else {
+        std::cout << "exit BLOCK" << std::endl;
+        return;
     }
 }
 
@@ -62,14 +70,18 @@ void Parser::vars() {
     std::cout << "entered VARS" << std::endl;
     if(currentToken.getID() == KWD_VAR_tk) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         if(currentToken.getID() == IDENTIFIER_tk) {
             currentToken = scanner.getNextToken();
+            currentToken.printToken();
             if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(":") == 0) {
                 currentToken = scanner.getNextToken();
+                currentToken.printToken();
                 if(currentToken.getID() == INTEGER_tk) {
                     currentToken = scanner.getNextToken();
+                    currentToken.printToken();
                     vars();
-                    std::cout << "exit VARS" << std::endl;
+                    std::cout << "exit VARS 1" << std::endl;
                     return;
                 }
                 else {
@@ -85,7 +97,7 @@ void Parser::vars() {
         }
     }
     else {
-        std::cout << "exit VARS" << std::endl;
+        std::cout << "exit VARS 2" << std::endl;
         return;
     }
 }
@@ -100,6 +112,7 @@ void Parser::Z() {
     std::cout << "entered Z" << std::endl;
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("+") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         expr();
         std::cout << "exit Z" << std::endl;
         return;
@@ -117,6 +130,7 @@ void Parser::Y() {
     std::cout << "entered Y" << std::endl;
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("-") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         A();
     }
     std::cout << "exit Y" << std::endl;
@@ -134,12 +148,14 @@ void Parser::X() {
     std::cout << "entered X" << std::endl;
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("/") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         N();
         std::cout << "exit X" << std::endl;
         return;
     }
     else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("*") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         N();
         std::cout << "exit X" << std::endl;
         return;
@@ -150,6 +166,7 @@ void Parser::M() {
     std::cout << "entered M" << std::endl;
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("-") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         M();
         std::cout << "exit M" << std::endl;
         return;
@@ -165,9 +182,11 @@ void Parser::R() {
     std::cout << "entered R" << std::endl;
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("[") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         expr();
         if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("]") == 0) {
             currentToken = scanner.getNextToken();
+            currentToken.printToken();
             std::cout << "exit R" << std::endl;
             return;
         }
@@ -178,15 +197,18 @@ void Parser::R() {
     }
     else if(currentToken.getID() == IDENTIFIER_tk) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         std::cout << "exit R" << std::endl;
         return;
     }
     else if(currentToken.getID() == INTEGER_tk) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         std::cout << "exit R" << std::endl;
         return;
     }
     else {
+        std::cout << "R error" << std::endl;
         error();
     }
 }
@@ -196,11 +218,13 @@ void Parser::stats() {
     stat();
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(";") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         mStat();
         std::cout << "exit STATS" << std::endl;
         return;
     }
     else {
+        std::cout << "HERE" << std::endl;
         error();
     }
 }
@@ -210,10 +234,12 @@ void Parser::mStat() {
     stat();
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(";")) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         mStat();
-        std::cout << "exit MSTAT" << std::endl;
+        std::cout << "exit MSTAT 1" << std::endl;
         return;
     }
+    std::cout << "exit MSTAT 2" << std::endl;
 }
 
 void Parser::stat() {
@@ -224,19 +250,17 @@ void Parser::stat() {
     IF();
     loop();
     assign();
-    if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(";") == 0) {
-        currentToken = scanner.getNextToken();
-        std::cout << "exit STAT" << std::endl;
-        return;
-    }
+    std::cout << "exit STAT" << std::endl;
 }
 
 void Parser::in() {
     std::cout << "entered IN" << std::endl;
     if(currentToken.getID() == KWD_IN_tk) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         if(currentToken.getID() == IDENTIFIER_tk) {
             currentToken = scanner.getNextToken();
+            currentToken.printToken();
             std::cout << "exit IN" << std::endl;
             return;
         }
@@ -251,6 +275,7 @@ void Parser::out() {
     std::cout << "entered OUT" << std::endl;
     if(currentToken.getID() == KWD_OUT_tk) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         expr();
         std::cout << "exit OUT" << std::endl;
         return;
@@ -261,17 +286,22 @@ void Parser::IF() {
     std::cout << "entered IF" << std::endl;
     if(currentToken.getID() == KWD_COND_tk) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("(") == 0) {
             currentToken = scanner.getNextToken();
+            currentToken.printToken();
             if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("(") == 0) {
                 currentToken = scanner.getNextToken();
+                currentToken.printToken();
                 expr();
                 RO();
                 expr();
                 if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(")") == 0) {
                     currentToken = scanner.getNextToken();
+                    currentToken.printToken();
                     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(")") == 0) {
                         currentToken = scanner.getNextToken();
+                        currentToken.printToken();
                         stat();
                         std::cout << "exit IF" << std::endl;
                         return;
@@ -298,19 +328,24 @@ void Parser::IF() {
 
 void Parser::loop() {
     std::cout << "entered LOOP" << std::endl;
-   if(currentToken.getID() == KWD_ITERATE_tk) {
+    if(currentToken.getID() == KWD_ITERATE_tk) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("(") == 0) {
             currentToken = scanner.getNextToken();
+            currentToken.printToken();
             if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("(") == 0) {
                 currentToken = scanner.getNextToken();
+                currentToken.printToken();
                 expr();
                 RO();
                 expr();
                 if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(")") == 0) {
                     currentToken = scanner.getNextToken();
+                    currentToken.printToken();
                     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(")") == 0) {
                         currentToken = scanner.getNextToken();
+                        currentToken.printToken();
                         stat();
                         std::cout << "exit LOOP" << std::endl;
                         return;
@@ -339,12 +374,15 @@ void Parser::assign() {
     std::cout << "entered ASSIGN" << std::endl;
     if(currentToken.getID() == IDENTIFIER_tk) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("<") == 0) {
             currentToken = scanner.getNextToken();
+            currentToken.printToken();
             if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("<") == 0) {
                 currentToken = scanner.getNextToken();
+                currentToken.printToken();
                 expr();
-                std::cout << "exit ASSIGN" << std::endl;
+                std::cout << "exit ASSIGN 1" << std::endl;
                 return;
             }
             else {
@@ -355,7 +393,7 @@ void Parser::assign() {
             error();
         }
     }
-    std::cout << "exit ASSIGN" << std::endl;
+    std::cout << "exit ASSIGN 2" << std::endl;
     return;
 }
 
@@ -363,18 +401,21 @@ void Parser::RO() {
     std::cout << "entered RO" << std::endl;
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("<") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         W();
         std::cout << "exit RO" << std::endl;
         return;
     }
     else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(">") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         T();
         std::cout << "exit RO" << std::endl;
         return;
     }
     else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("=") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         std::cout << "exit RO" << std::endl;
         return;
     }
@@ -387,11 +428,13 @@ void Parser::W() {
     std::cout << "entered W" << std::endl;
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare("<") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         std::cout << "exit W" << std::endl;
         return;
     }
     else if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(">") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         std::cout << "exit W" << std::endl;
         return;
     }
@@ -404,6 +447,7 @@ void Parser::T() {
     std::cout << "entered T" << std::endl;
     if(currentToken.getID() == OPERATOR_tk && currentToken.getInstance().compare(">") == 0) {
         currentToken = scanner.getNextToken();
+        currentToken.printToken();
         std::cout << "exit T" << std::endl;
         return;
     }
