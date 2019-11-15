@@ -17,7 +17,7 @@ node::node(std::string label) :
 void ParseTree::printNode(node* node) {
     std::cout << node->label;
     if(node->data.size() > 0)
-        std::cout << " data: ";
+        std::cout << "\tdata: ";
 
     for(int i = 0; i < node->data.size(); ++i) {
         std::cout << node->data[i] << ", ";

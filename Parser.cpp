@@ -294,6 +294,7 @@ node* Parser::in() {
         currentToken = scanner.getNextToken();
         currentToken.printToken();
         if(currentToken.getID() == IDENTIFIER_tk) {
+            inNode->data.push_back(currentToken.getInstance());
             currentToken = scanner.getNextToken();
             currentToken.printToken();
             std::cout << "exit IN" << std::endl;
