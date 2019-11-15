@@ -34,3 +34,19 @@ https://github.com/CSnackerman/umslCompilersProjects
 
 Project 2 is contained in the branch "p2".
 The master branch is P1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Yes I know that when an error is detected by the parser, there is a huge memory leak.
+Or really it's just a lack of memory cleanup on exit.
+Thank goodness for operating systems amiright?
