@@ -7,17 +7,22 @@
 #ifndef PARSE_TREE_H
 #define PARSE_TREE_H
 
+#include <iostream>
 #include <string>
 #include <vector>
 
 struct node {
-    node* left;
-    node* right;
+    std::string label;
+    std::vector<node*> children;
     std::vector<std::string> data;
+
+    //Constructor
+    node(std::string label);
 };
 
 class ParseTree {
-    node root;
+public:
+    node* root;
 };
 
 #endif

@@ -20,28 +20,28 @@ private:
 
     //Nonterminal functions: 
 
-    ParseTree program();
-    void block();
-    void vars();
-    void expr();
-    void Z();
-    void A();
-    void Y();
-    void N();
-    void X();
-    void M();
-    void R();
-    void stats();
-    void mStat();
-    void stat();
-    void in();
-    void out();
-    void IF();
-    void loop();
-    void assign();
-    void RO();
-    void W();
-    void T();
+    node* program();
+    node* block();
+    node* vars();
+    node* expr();
+    node* Z();
+    node* A();
+    node* Y();
+    node* N();
+    node* X();
+    node* M();
+    node* R();
+    node* stats();
+    node* mStat();
+    node* stat();
+    node* in();
+    node* out();
+    node* IF();
+    node* loop();
+    node* assign();
+    node* RO();
+    node* W();
+    node* T();
 
     void error();
 
