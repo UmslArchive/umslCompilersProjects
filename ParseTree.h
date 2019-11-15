@@ -16,15 +16,17 @@ struct node {
     std::vector<node*> children;
     std::vector<std::string> data;
 
-    int indent;
-
     //Constructor
     node(std::string label);
 };
 
 class ParseTree {
 public:
+    ParseTree();
+
     node* root;
+
+    int indent;
 
     void printAll(node* root);
     void printNode(node* node);
