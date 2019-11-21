@@ -1,7 +1,7 @@
 //Author:   Colby Ackerman
 //Class:    CS4280 Program Translations
-//Assign:   Project 1
-//Date:     10/20/19
+//Assign:   Project 2
+//Date:     11/15/19
 //-----------------------------------------------------------------------------
 
 #include "Table.h"
@@ -10,15 +10,11 @@
 bool Table::isInitialized = false;
 
 //Constructor
-Table::Table()
-    :   sigma(std::map<char, int>()), 
-        fsaTable(std::vector< std::vector<int> >(TOTAL_st, std::vector<int>()))
+Table::Table() :
+    sigma(std::map<char, int>()), 
+    fsaTable(std::vector< std::vector<int> >(TOTAL_st, std::vector<int>()))
 {       
-
-        //Init sigma
         initSigma();
-
-        //Build the table
         buildFsaTable();
 
         isInitialized = true;
@@ -67,11 +63,10 @@ State Table::lookup(State state, char character) {
     {   
         //EOF character is not an error to report. Program just ends
         if(character != 0)
-            std::cerr << "ERROR:Illegal character input: '" << character << "'" << std::endl;
+            std::cerr << "ERROR: Invalid character \'" << character << "\' ";
 
         return ERROR_st;
     }
-        
 
     return (State)fsaTable [ state ] [ sigma[characterCategory] - 1 ];
 }
@@ -219,14 +214,6 @@ void Table::buildFsaTable() {
         fsaTable[GT_EQ_st][sigma['D'] - 1] = FIN_OP_st;
         fsaTable[GT_EQ_st][sigma['W'] - 1] = FIN_OP_st;
         fsaTable[GT_EQ_st][sigma['E'] - 1] = FIN_OP_st;
-
-        //Print the table
-        /* for(int i = 0; i < fsaTable.size(); ++i ) {
-            for(int j = 0; j < fsaTable[0].size(); ++j) {
-                std::cout << fsaTable[i][j] << " ";
-            }
-            std::cout << std::endl;
-        } */
     }
 }
 

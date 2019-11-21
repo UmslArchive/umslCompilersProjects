@@ -1,13 +1,13 @@
 # Author:	Colby Ackerman
 # Class:	CS4280 Program Translations
-# Assign:	Project 1
-# Date:		10/20/19
+# Assign:	Project 2
+# Date:		11/15/19
 ##################################################
 
 CC = g++
-CFLAGS =
-TARGET = scanner
-OBJS = main.o Scanner.o Table.o TestScanner.o Token.o
+CFLAGS = -g
+TARGET = frontEnd
+OBJS = main.o Scanner.o Table.o TestScanner.o TestParser.o Token.o TestTree.o ParseTree.o Parser.o
 .SUFFIXES: .cpp .o
 
 $(TARGET): $(OBJS)

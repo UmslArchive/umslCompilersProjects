@@ -1,7 +1,7 @@
 //Author:   Colby Ackerman
 //Class:    CS4280 Program Translations
-//Assign:   Project 1
-//Date:     10/20/19
+//Assign:   Project 2
+//Date:     11/15/19
 //-----------------------------------------------------------------------------
 
 #ifndef TOKEN_H

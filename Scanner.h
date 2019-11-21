@@ -1,21 +1,22 @@
 //Author:   Colby Ackerman
 //Class:    CS4280 Program Translations
-//Assign:   Project 1
-//Date:     10/20/19
+//Assign:   Project 2
+//Date:     11/15/19
 //-----------------------------------------------------------------------------
 
 #ifndef SCANNER_H
 #define SCANNER_H
 
+#include <limits>
+
 #include "Table.h"
 #include "Token.h"
-
-#include <limits>
 
 class Scanner {
 private:
     //Finite State Automaton transition table
     static Table FSA;
+    State currentState;
     
     //File data to be parsed.
     std::string fileData;
@@ -26,8 +27,7 @@ private:
     std::stringstream fileDataParser;
 
     char readNextCharacter();
-
-    State currentState;
+    
 public:
     Scanner();
     Token getNextToken();

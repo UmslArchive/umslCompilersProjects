@@ -1,12 +1,14 @@
 //Author:   Colby Ackerman
 //Class:    CS4280 Program Translations
-//Assign:   Project 1
-//Date:     10/20/19
+//Assign:   Project 2
+//Date:     11/15/19
 //-----------------------------------------------------------------------------
 
 #include <fstream>
 
 #include "TestScanner.h"
+#include "TestParser.h"
+#include "TestTree.h"
 
 //Change this to either run all tests or just the scanner test. [0, 1]
 #define PRIMARY_TEST_ONLY 1
@@ -18,18 +20,20 @@ bool readFromFile(const std::string path);
 std::string fileData;
 std::string fileName;
 
+//=============================================================================
+
 int main(int argc, char* argv[]) {
 
     //Handle file and command line arguments
     bool success = false;
 
-    //Handle either simulate keyboard input or file redirection.
+    //Handle either simulate keyboard input or file redirection
     if(argc == 1) {
         handleFileRedirOrKeyboardSim();
         success = true;
     }
 
-    //Otherwise need to load a file.
+    //Otherwise need to load a file
     else {
         //Get the file name.
         if(!parseArgs(argc, argv)) {
@@ -37,30 +41,34 @@ int main(int argc, char* argv[]) {
             return 0;
         }
 
-        //Read entire file contents into fileString.
+        //Read entire file contents into fileString
         if(!readFromFile(fileName)) {
-            std::cerr << "Error: Function: readFromFile(std::string)" << std::endl;
+            std::cerr << "Error: File could not be opened" << std::endl;
             return 0;
         }
         success = true;
     }
 
-    //DEBUG
-    //std::cout << "FILEDATA:" << fileData << std::endl;
+    //-----
 
+    //Testing:
 
-    //Testing
-    TestScanner tester;
-    if(PRIMARY_TEST_ONLY == 1) {
-        tester.primaryScannerTest(fileData);
-    }
-    else {
-        tester.runTokenTests();
-        tester.primaryScannerTest("");
-    }
+    /* TestParser parserTester;
+    parserTester.parserNoTreeTest(fileData); */
+
+    Parser parser;
+    parser.sendFileDataToScanner(fileData);
+
+    ParseTree parseTree = parser.parse();
+
+    
+    testPrintParseTree(parseTree);
+    
 
     return 0;
 }
+
+//=============================================================================
 
 bool parseArgs(int argc, char* argv[]) {
     if(argc > 2){
@@ -70,10 +78,10 @@ bool parseArgs(int argc, char* argv[]) {
 
     /* 
     This is the case in which the user has passed the name of a file without
-    the file extension appended to the end of it. 
+    the file extension appended to the end of it
     */
     else if(argc == 2) {
-        //Retrieve the file name from the argument list.
+        //Retrieve the file name from the argument list
         fileName = std::string(argv[1]);
     
         //Find the last occurence of '.' 

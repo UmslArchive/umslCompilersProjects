@@ -1,7 +1,7 @@
 //Author:   Colby Ackerman
 //Class:    CS4280 Program Translations
-//Assign:   Project 1
-//Date:     10/20/19
+//Assign:   Project 2
+//Date:     11/15/19
 //-----------------------------------------------------------------------------
 
 #include "Scanner.h"
@@ -10,13 +10,15 @@
 Table Scanner::FSA = Table();
 
 //Constructor
-Scanner::Scanner() 
-:fileData(""), lineCount(1)
+Scanner::Scanner() :
+    fileData(""), 
+    lineCount(1)
 {}
 
 
 Token Scanner::getNextToken() {
 
+    //Used to fetch the 
     Token dummyToken(ERROR_tk, "DUMMY", -1);
 
     //Token attributes
@@ -107,7 +109,7 @@ Token Scanner::getNextToken() {
         }
 
         if(currentState == ERROR_st) {
-            std::cerr << "ERROR on line#" << lineCount << std::endl;
+            std::cerr << "on line #" << lineCount << std::endl;
             return Token(ERROR_tk, "ERROR_TOKEN", lineCount);
         }
 
