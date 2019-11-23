@@ -14,7 +14,7 @@
 
 class Parser  {
 private:
-    static const bool debug = false;
+    static const bool debug = true;
     Scanner scanner;
     Token currentToken;
     ParseTree parseTree;

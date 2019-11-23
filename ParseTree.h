@@ -27,9 +27,13 @@ public:
     node* root;
 
     int indent;
+    int varCount;
 
     void printAll(node* root);
     void printNode(node* node);
+
+    void traverseTree(node* root);
+    void processNode(node* node);
 };
 
 #endif

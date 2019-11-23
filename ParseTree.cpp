@@ -39,11 +39,19 @@ void ParseTree::printAll(node* root) {
     printNode(root);
 
     for(int i = 0; i < root->children.size(); ++i) {
-        indent++;
+        indent += 2;
         if(root->children[i] != NULL) {
             printAll(root->children[i]);
         }
-        indent--;
+        indent -= 2;
 
     }
+}
+
+void ParseTree::traverseTree(node* root) {
+    
+}
+
+void ParseTree::processNode(node* node) {
+    
 }

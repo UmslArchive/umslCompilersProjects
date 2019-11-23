@@ -59,7 +59,7 @@ node* Parser::block() {
         if(currentToken.getID() == KWD_STOP_tk) {
             currentToken = scanner.getNextToken();
             currentToken.printToken();
-            if(debug) std::cout << "exit BLOCK" << std::endl;
+            if(debug) std::cout << "exit BLOCK 1" << std::endl;
             return blockNode;
         }
         else {
@@ -67,7 +67,7 @@ node* Parser::block() {
         }
     }
     
-    if(debug) std::cout << "exit BLOCK" << std::endl;
+    if(debug) std::cout << "exit BLOCK 2" << std::endl;
     return NULL;
 }
 
